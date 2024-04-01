@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import React from "react";
-import { Button } from "../../../../shared/ui/Button/Buttons";
+import { Button } from "shared/ui/Button/Buttons";
 
 type SidebarProps = { className?: string };
 

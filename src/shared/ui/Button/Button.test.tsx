@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Button, ThemeButton } from "./Buttons";
+import { Button, ThemeButton } from "./Button";
 import React from "react";
 
 describe("Button", () => {

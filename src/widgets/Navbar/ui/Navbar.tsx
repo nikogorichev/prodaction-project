@@ -16,23 +16,23 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
+      <AppLink
+        to={"/"}
+        className={styles.mainLink}
+        theme={AppLinkTheme.SECONDARY}
+      >
+        Главная
+      </AppLink>
+
+      <AppLink to={"/about"} theme={AppLinkTheme.SECONDARY}>
+        О сайте
+      </AppLink>
       <Button
         className={styles.links}
         theme={ThemeButton.CLEAR_INVERTED}
         onClick={onToggleModal}
       >
         Войти
-        {/* <AppLink
-          to={"/"}
-          className={styles.mainLink}
-          theme={AppLinkTheme.SECONDARY}
-        >
-          Главная
-        </AppLink>
-        
-        <AppLink to={"/about"} theme={AppLinkTheme.SECONDARY}>
-          О сайте
-        </AppLink> */}
       </Button>
       <Modal isOpen={isAuthModal} onClose={onToggleModal}>
         12uih u1i3 qhui13 hr4u23ih ui32h 4u2i3 rhiu24r5 ubg24i u2ih rui23

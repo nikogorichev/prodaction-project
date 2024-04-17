@@ -5,7 +5,7 @@ import { getCounterValue } from "../model/selectors/getCounterValue/getCounterVa
 
 export const Counter = () => {
   const dispatch = useDispatch();
-  const counterValue = useSelector(getCounterValue)
+  const counterValue = useSelector(getCounterValue);
   const increment = () => {
     dispatch(counterActions.increment());
   };
@@ -15,9 +15,13 @@ export const Counter = () => {
   };
   return (
     <div>
-      <h1>{counterValue}</h1>
-      <Button onClick={increment}>increment</Button>
-      <Button onClick={decrement}>decrement</Button>
+      <h1 data-testid="counter-value">{counterValue}</h1>
+      <Button onClick={increment} data-testid="increment-btn">
+        increment
+      </Button>
+      <Button onClick={decrement} data-testid="decrement-btn">
+        decrement
+      </Button>
     </div>
   );
 };

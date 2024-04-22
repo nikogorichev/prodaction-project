@@ -1,18 +1,19 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./Modal.module.scss";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, ReactNode, useEffect, useRef, useState } from "react";
 import { Portal } from "shared/ui/Portal/Portal";
 
 interface ModalProps {
   isOpen?: boolean;
   onClose?: () => void;
   className?: string;
+  children?: ReactNode
 }
 
 const ANIMATION_DELAY = 300;
 
-export const Modal: React.FC<ModalProps> = memo(
-  ({ className, children, isOpen, onClose }) => {
+export const Modal = memo(
+  ({ className, children, isOpen, onClose }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 

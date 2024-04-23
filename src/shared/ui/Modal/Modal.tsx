@@ -38,8 +38,6 @@ export const Modal = memo(
     useEffect(() => {
       if (isOpen) {
         setIsMounted(true);
-      } else {
-        setIsMounted(false);
       }
     }, [isOpen]);
 

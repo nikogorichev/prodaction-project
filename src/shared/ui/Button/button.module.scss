@@ -64,3 +64,8 @@
   font: var(--font-xl);
 }
 
+.disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+

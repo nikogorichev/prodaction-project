@@ -2,6 +2,7 @@ import { Counter } from "entities/Counter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/Input/Input";
+import { Text } from "shared/ui/Text/Text";
 
 const MainPage = () => {
   const { t } = useTranslation("main");
@@ -13,7 +14,7 @@ const MainPage = () => {
 
   return (
     <div>
-      {t("Главная")}
+      <Text title={t("Главная")} text="обычный текст" />
       <Input value={value} onChange={handleChange} />
     </div>
   );

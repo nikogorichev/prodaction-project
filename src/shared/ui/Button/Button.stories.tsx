@@ -34,3 +34,11 @@ export const Outline: Story = {
     theme: ThemeButton.OUTLINE,
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    children: "Text",
+    theme: ThemeButton.OUTLINE,
+    disabled: true,
+  },
+};

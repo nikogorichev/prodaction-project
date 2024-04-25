@@ -30,17 +30,20 @@ export const Button: React.FC<ButtonProps> = ({
   theme,
   square,
   size,
+  disabled,
   ...otherProps
 }) => {
   const mods = {
     [styles.square]: square,
+    [styles.disabled]: disabled,
   };
 
   const optional: string[] = [className, styles[theme], styles[size]];
-  
+
   return (
     <button
       className={classNames(styles.button, mods, optional)}
+      disabled={disabled}
       {...otherProps}
     >
       {children}

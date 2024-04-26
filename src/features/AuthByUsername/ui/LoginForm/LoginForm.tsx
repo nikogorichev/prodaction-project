@@ -6,6 +6,7 @@ import { memo, useCallback } from "react";
 import { LoginActions } from "features/AuthByUsername/model/slice/loginSlice";
 import { getLoginState } from "features/AuthByUsername/model/selectors/getLoginState/getLoginState";
 import { loginByUsername } from "features/AuthByUsername/model/services/loginByUsername/loginByUsername";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 
 export const LoginForm = memo(() => {
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ export const LoginForm = memo(() => {
 
   return (
     <div className={styles.loginForm}>
-      {error && <div>{error}</div>}
+      <Text title="Форма авторизации" />
+      {error && <Text text={error} theme={TextTheme.ERROR} />}
       <Input
         type="text"
         className={styles.input}

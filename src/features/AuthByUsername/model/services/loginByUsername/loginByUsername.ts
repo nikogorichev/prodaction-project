@@ -8,6 +8,11 @@ interface LoginByUsernameProps {
   password: string;
 }
 
+enum LoginErrors {
+  INCORRECT_DATA = "Вы ввели неверный логин или пароль",
+  SERVER_ERROR = ""
+}
+
 export const loginByUsername = createAsyncThunk<
   User,
   LoginByUsernameProps,
@@ -23,6 +28,6 @@ export const loginByUsername = createAsyncThunk<
     return response.data;
   } catch (error) {
     console.log(error);
-    return thunkAPI.rejectWithValue("Вы ввели неверный логин или пароль");
+    return thunkAPI.rejectWithValue(LoginErrors.INCORRECT_DATA);
   }
 });

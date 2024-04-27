@@ -1,15 +1,17 @@
 import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import styles from "./navbar.module.scss";
-import { Modal } from "shared/ui/Modal/Modal";
 import { useState } from "react";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { LoginModal } from "features/AuthByUsername";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserAuthData, userActions } from "entities/User";
 
 type NavbarProps = { className?: string };
 
 export const Navbar = ({ className }: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
+  const authData = useSelector(getUserAuthData);
+  const dispatch = useDispatch();
 
   const onCloseModal = () => {
     setIsAuthModal(false);
@@ -19,19 +21,26 @@ export const Navbar = ({ className }: NavbarProps) => {
     setIsAuthModal(true);
   };
 
+  const onLogout = () => {
+    dispatch(userActions.logout());
+  };
+
+  if (authData) {
+    return (
+      <div className={classNames(styles.navbar, {}, [className])}>
+        <Button
+          className={styles.links}
+          theme={ThemeButton.CLEAR_INVERTED}
+          onClick={onLogout}
+        >
+          Выйти
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
-      <AppLink
-        to={"/"}
-        className={styles.mainLink}
-        theme={AppLinkTheme.SECONDARY}
-      >
-        Главная
-      </AppLink>
-
-      <AppLink to={"/about"} theme={AppLinkTheme.SECONDARY}>
-        О сайте
-      </AppLink>
       <Button
         className={styles.links}
         theme={ThemeButton.CLEAR_INVERTED}

@@ -8,14 +8,13 @@ import { useDispatch } from "react-redux";
 import { userActions } from "entities/User";
 
 const App = () => {
-  const { theme } = useTheme();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
   }, []);
   return (
-    <div className={classNames("app", {}, [theme])}>
+    <div className={classNames("app", {})}>
       <Suspense fallback="">
         <Navbar />
         <div className="content-page">

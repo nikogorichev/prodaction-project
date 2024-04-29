@@ -2,6 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./Modal.module.scss";
 import { memo, ReactNode, useEffect, useRef, useState } from "react";
 import { Portal } from "shared/ui/Portal/Portal";
+import { useTheme } from "app/providers/ThemeProvider";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -17,7 +18,6 @@ export const Modal = memo(
   ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const mods: Record<string, boolean> = {
@@ -60,13 +60,15 @@ export const Modal = memo(
       event.stopPropagation();
     };
 
+    const additionalStyles = [className]
+
     if (lazy && !isMounted) {
       return null;
     }
 
     return (
       <Portal>
-        <div className={classNames(styles.modal, mods, [className])}>
+        <div className={classNames(styles.modal, mods, additionalStyles)}>
           <div className={styles.overlay} onClick={handleOnClose}>
             <div className={styles.content} onClick={onContentClick}>
               {children}

@@ -1,16 +1,16 @@
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import styles from "./LoginForm.module.scss";
 import { Input } from "shared/ui/Input/Input";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { memo, useCallback } from "react";
 import { getLoginState } from "features/AuthByUsername/model/selectors/getLoginState/getLoginState";
 import { loginByUsername } from "features/AuthByUsername/model/services/loginByUsername/loginByUsername";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { loginActions } from "features/AuthByUsername/model/slice/loginSlice";
 
-export const LoginForm = memo(() => {
+const LoginForm = memo(() => {
   const dispatch = useDispatch();
-
+  const store = useStore()
   const { username, password, error, isLoading } = useSelector(getLoginState);
 
   const onChangeUsername = useCallback(
@@ -62,3 +62,5 @@ export const LoginForm = memo(() => {
 });
 
 LoginForm.displayName = "LoginForm";
+
+export default LoginForm;

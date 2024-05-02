@@ -1,5 +1,5 @@
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import { LoginForm } from "./LoginForm";
+import LoginForm from "./LoginForm";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

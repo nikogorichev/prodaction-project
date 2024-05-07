@@ -15,7 +15,7 @@ export const Primary: Story = {
   decorators: [
     StoreDecorator({
       loginForm: { username: "123", password: "asd" },
-    }),
+    },),
   ],
 };
 

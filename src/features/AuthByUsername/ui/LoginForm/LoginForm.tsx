@@ -1,15 +1,14 @@
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import styles from "./LoginForm.module.scss";
 import { Input } from "shared/ui/Input/Input";
-import { useDispatch, useSelector, useStore } from "react-redux";
-import { memo, useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { memo, useCallback } from "react";
 import { loginByUsername } from "features/AuthByUsername/model/services/loginByUsername/loginByUsername";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import {
   loginActions,
   loginReducer,
 } from "features/AuthByUsername/model/slice/loginSlice";
-import { ReduxStoreManager } from "app/providers/StoreProvider";
 import { getLoginUsername } from "features/AuthByUsername/model/selectors/getLoginUsername/getLoginUsername";
 import { getLoginPassword } from "features/AuthByUsername/model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginLoading } from "features/AuthByUsername/model/selectors/getLoginLoading/getLoginLoading";
@@ -18,13 +17,18 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm = memo(() => {
-  const dispatch = useDispatch();
+interface LoginFormProps {
+  onSuccess: () => void;
+}
+
+const LoginForm = memo(({ onSuccess }: LoginFormProps) => {
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
   const isLoading = useSelector(getLoginLoading);
@@ -44,8 +48,11 @@ const LoginForm = memo(() => {
     [dispatch]
   );
 
-  const onLoadingClick = () => {
-    dispatch(loginByUsername({ username, password }));
+  const onLoginClick = async () => {
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === "fulfilled") {
+      onSuccess();
+    }
   };
 
   return (
@@ -70,7 +77,7 @@ const LoginForm = memo(() => {
         <Button
           theme={ThemeButton.OUTLINE}
           className={styles.loginBtn}
-          onClick={onLoadingClick}
+          onClick={onLoginClick}
           disabled={isLoading}
         >
           Войти

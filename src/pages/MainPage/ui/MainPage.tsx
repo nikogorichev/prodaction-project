@@ -1,5 +1,5 @@
 import { Counter } from "entities/Counter";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/Input/Input";
 import { Text } from "shared/ui/Text/Text";
@@ -19,69 +19,69 @@ const MainPage = () => {
   const { t } = useTranslation("main");
   const [value, setValue] = useState("");
 
-  const [timeMs, setTimeMs] = useState(0);
-  const [timeInterval, setTimeInterval] =
-    useState<ReturnType<typeof setInterval>>(null);
-  const [isTimeActive, setIsTimeActive] = useState(false);
-
-  const startTimer = () => {
-    console.log(123);
-    setTimeInterval(
-      setInterval(() => {
-        setTimeMs((prev) => prev + 1);
-      }, 1000)
-    );
-  };
-
-  const pauseTimer = () => {
-    clearInterval(timeInterval);
-  };
-
-  const toggleHandler = () => {
-    setIsTimeActive((prev) => !prev);
-  };
-
-  const resetHandler = () => {
-    setTimeMs(0);
-    clearInterval(timeInterval);
-    setIsTimeActive(false);
-  };
-
-  const [counter, setCounter] = useState(0);
-  const [timeIntervalCounter, setTimeIntervalCounter] =
-    useState<ReturnType<typeof setInterval>>(null);
-
-  const startCounter = () => {
-    if (!timeIntervalCounter) {
-      setTimeIntervalCounter(
-        setInterval(() => {
-          setCounter((prev) => prev + 1);
-        }, 1000)
-      );
-    }
-  };
-
-  const pauseCounter = () => {
-    clearInterval(timeIntervalCounter);
-    setTimeIntervalCounter(null);
-  };
-
-  const resetCounter = () => {
-    setCounter(0);
-    pauseCounter();
-  };
-
   const handleChange = (val: string) => {
     setValue(val);
   };
 
-  useEffect(() => {
-    if (isTimeActive) {
-      startTimer();
-    } else {
-      pauseTimer();
-    }
-  }, [isTimeActive]);
+  // const [timeMs, setTimeMs] = useState(0);
+  // const [timeInterval, setTimeInterval] =
+  //   useState<ReturnType<typeof setInterval>>(null);
+  // const [isTimeActive, setIsTimeActive] = useState(false);
+
+  // const startTimer = () => {
+  //   console.log(123);
+  //   setTimeInterval(
+  //     setInterval(() => {
+  //       setTimeMs((prev) => prev + 1);
+  //     }, 1000)
+  //   );
+  // };
+
+  // const pauseTimer = () => {
+  //   clearInterval(timeInterval);
+  // };
+
+  // const toggleHandler = () => {
+  //   setIsTimeActive((prev) => !prev);
+  // };
+
+  // const resetHandler = () => {
+  //   setTimeMs(0);
+  //   clearInterval(timeInterval);
+  //   setIsTimeActive(false);
+  // };
+
+  // const [counter, setCounter] = useState(0);
+  // const [timeIntervalCounter, setTimeIntervalCounter] =
+  //   useState<ReturnType<typeof setInterval>>(null);
+
+  // const startCounter = () => {
+  //   if (!timeIntervalCounter) {
+  //     setTimeIntervalCounter(
+  //       setInterval(() => {
+  //         setCounter((prev) => prev + 1);
+  //       }, 1000)
+  //     );
+  //   }
+  // };
+
+  // const pauseCounter = () => {
+  //   clearInterval(timeIntervalCounter);
+  //   setTimeIntervalCounter(null);
+  // };
+
+  // const resetCounter = () => {
+  //   setCounter(0);
+  //   pauseCounter();
+  // };
+
+  // useEffect(() => {
+  //   if (isTimeActive) {
+  //     startTimer();
+  //   } else {
+  //     pauseTimer();
+  //   }
+  // }, [isTimeActive]);
 
   return (
     <div>
@@ -98,7 +98,7 @@ const MainPage = () => {
 
       <br />
 
-      <div className="timer-container">
+      {/* <div className="timer-container">
         <div>{humanizeTime(timeMs)}</div>
 
         <div className="container">
@@ -110,7 +110,7 @@ const MainPage = () => {
       <div>{`Счетчик: ${counter}`}</div>
       <button onClick={startCounter}>Начать</button>
       <button onClick={pauseCounter}>Пауза</button>
-      <button onClick={resetCounter}>Сбросить</button>
+      <button onClick={resetCounter}>Сбросить</button> */}
     </div>
   );
 };

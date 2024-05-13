@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Николай",
+    "lastname": "Горичев",
+    "age": "27",
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Saint-Petersburg",
+    "usename": "admin", 
+    "avatar": "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg"
+  }
 }

@@ -6,7 +6,7 @@ import {
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 
 const initialReducers: ReducersList = {
-  profilePage: profileReducer,
+  profile: profileReducer,
 };
 
 const ProfilePage = () => {

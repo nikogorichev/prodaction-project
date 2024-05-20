@@ -1,5 +1,20 @@
+import { profileReducer } from "entities/Profile";
+import { memo, useEffect, useState } from "react";
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+
+const initialReducers: ReducersList = {
+  profilePage: profileReducer,
+};
+
 const ProfilePage = () => {
-  return <div>Страница профиля</div>;
+  return (
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+      <div>Страница профиля</div>
+    </DynamicModuleLoader>
+  );
 };
 
 export default ProfilePage;

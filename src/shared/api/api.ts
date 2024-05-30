@@ -6,6 +6,6 @@ const baseURL = __IS_DEV__ ? "http://localhost:8000" : "https://production.ru";
 export const $api = axios.create({
   baseURL,
   headers: {
-    authorization: localStorage.getItem(USER_LOCALSTORAGE_KEY),
+    authorization: localStorage.getItem(USER_LOCALSTORAGE_KEY) || "",
   },
 });

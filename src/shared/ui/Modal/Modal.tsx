@@ -1,4 +1,4 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from "shared/lib/classNames/classNames";
 import styles from "./Modal.module.scss";
 import { memo, ReactNode, useEffect, useRef, useState } from "react";
 import { Portal } from "shared/ui/Portal/Portal";
@@ -18,9 +18,9 @@ export const Modal = memo(
   ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
       [styles.opened]: isOpen,
       [styles.isClosing]: isClosing,
     };
@@ -51,7 +51,7 @@ export const Modal = memo(
         window.addEventListener("keydown", onKeyDown);
       }
       return () => {
-        clearTimeout(timerRef.current);
+        timerRef.current && clearTimeout(timerRef.current);
         window.removeEventListener("keydown", onKeyDown);
       };
     }, [isOpen]);

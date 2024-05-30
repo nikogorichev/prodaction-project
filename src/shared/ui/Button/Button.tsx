@@ -1,5 +1,5 @@
 import { Link, LinkProps } from "react-router-dom";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from "shared/lib/classNames/classNames";
 import styles from "./button.module.scss";
 import { ButtonHTMLAttributes } from "react";
 
@@ -27,18 +27,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: React.FC<ButtonProps> = ({
   className,
   children,
-  theme,
+  theme = ThemeButton.OUTLINE,
   square,
-  size,
+  size = ButtonSize.L,
   disabled,
   ...otherProps
 }) => {
-  const mods = {
+  const mods: Mods = {
     [styles.square]: square,
     [styles.disabled]: disabled,
   };
 
-  const optional: string[] = [className, styles[theme], styles[size]];
+  const optional: string[] = [className || "", styles[theme], styles[size]];
 
   return (
     <button

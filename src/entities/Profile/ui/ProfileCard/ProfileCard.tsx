@@ -1,37 +1,51 @@
-import { getProfileData } from "entities/Profile/model/selectors/getProfileData/getProfileData";
-import { getProfileError } from "entities/Profile/model/selectors/getProfileError/getProfileError";
-import { getProfileLoading } from "entities/Profile/model/selectors/getProfileLoading/getProfileLoading";
-import { useSelector } from "react-redux";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
-import { Text } from "shared/ui/Text/Text";
+import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
 import styles from "./ProfileCard.module.scss";
 import { Input } from "shared/ui/Input/Input";
+import { Profile } from "entities/Profile/model/types/profile";
+import Loader from "shared/ui/Loader/Loader";
+import { classNames } from "shared/lib/classNames/classNames";
 
-export const ProfileCard = () => {
-  const data = useSelector(getProfileData);
-  const isLoading = useSelector(getProfileLoading);
-  const error = useSelector(getProfileError);
+interface ProfileCardProps {
+  data?: Profile;
+  isLoading?: boolean;
+  error?: string;
+}
+
+export const ProfileCard = ({ data, isLoading, error }: ProfileCardProps) => {
+  if (isLoading) {
+    return (
+      <div className={classNames(styles.profileCard, {}, [styles.loading])}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={classNames(styles.profileCard, {}, [styles.error])}>
+        <Text
+          theme={TextTheme.ERROR}
+          title="Ошибка при загрузке профиля"
+          text="Обновите страницу"
+          align={TextAlign.CENTER}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.profileCard}>
-      <div className={styles.header}>
-        <Text title="Профиль" />
-        <Button theme={ThemeButton.OUTLINE} className={styles.editBtn}>
-          Редактировать
-        </Button>
-      </div>
-      <div className={styles.data}>
-        <Input
-          value={data?.first}
-          placeholder="Ваше имя"
-          className={styles.input}
-        />
-        <Input
-          value={data?.lastname}
-          placeholder="Ваша фамилия"
-          className={styles.input}
-        />
-      </div>
+      <Input
+        value={data?.first}
+        placeholder="Ваше имя"
+        className={styles.input}
+      />
+      <Input
+        value={data?.lastname}
+        placeholder="Ваша фамилия"
+        className={styles.input}
+      />
     </div>
   );
 };

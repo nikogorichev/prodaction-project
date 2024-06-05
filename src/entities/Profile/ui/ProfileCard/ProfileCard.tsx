@@ -10,9 +10,19 @@ interface ProfileCardProps {
   data?: Profile;
   isLoading?: boolean;
   error?: string;
+  readonly?: boolean;
+  onChangeFirstname: (value: string) => void;
+  onChangeLastname: (value: string) => void;
 }
 
-export const ProfileCard = ({ data, isLoading, error }: ProfileCardProps) => {
+export const ProfileCard = ({
+  data,
+  isLoading,
+  error,
+  readonly,
+  onChangeFirstname,
+  onChangeLastname,
+}: ProfileCardProps) => {
   if (isLoading) {
     return (
       <div className={classNames(styles.profileCard, {}, [styles.loading])}>
@@ -40,11 +50,15 @@ export const ProfileCard = ({ data, isLoading, error }: ProfileCardProps) => {
         value={data?.first}
         placeholder="Ваше имя"
         className={styles.input}
+        onChange={onChangeFirstname}
+        readonly={readonly}
       />
       <Input
         value={data?.lastname}
         placeholder="Ваша фамилия"
         className={styles.input}
+        onChange={onChangeLastname}
+        readonly={readonly}
       />
     </div>
   );

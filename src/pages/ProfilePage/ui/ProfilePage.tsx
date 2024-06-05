@@ -3,11 +3,13 @@ import {
   getProfileData,
   getProfileError,
   getProfileLoading,
+  getProfileReadonly,
+  profileActions,
   ProfileCard,
   profileReducer,
 } from "entities/Profile";
 
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   DynamicModuleLoader,
@@ -26,14 +28,37 @@ const ProfilePage = () => {
   const isLoading = useSelector(getProfileLoading);
   const error = useSelector(getProfileError);
 
+  const readonly = useSelector(getProfileReadonly);
+
   useEffect(() => {
     dispatch(fetchProfileData());
   }, [dispatch]);
+
+  const onChangeFirstname = useCallback(
+    (value: string) => {
+      dispatch(profileActions.updateProfile({ first: value }));
+    },
+    [dispatch]
+  );
+
+  const onChangeLastname = useCallback(
+    (value: string) => {
+      dispatch(profileActions.updateProfile({ lastname: value }));
+    },
+    [dispatch]
+  );
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div>
         <ProfilePageHeader />
-        <ProfileCard data={data} isLoading={isLoading} error={error} />
+        <ProfileCard
+          data={data}
+          isLoading={isLoading}
+          error={error}
+          readonly={readonly}
+          onChangeFirstname={onChangeFirstname}
+          onChangeLastname={onChangeLastname}
+        />
       </div>
     </DynamicModuleLoader>
   );

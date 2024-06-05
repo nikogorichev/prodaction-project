@@ -13,8 +13,11 @@ const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    setProfileData: (state, action: PayloadAction<Profile>) => {
-      state.data = action.payload;
+    setReadonly: (state, action: PayloadAction<boolean>) => {
+      state.readonly = action.payload;
+    },
+    updateProfile: (state, action: PayloadAction<Profile>) => {
+      state.data = { ...state.data, ...action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -25,13 +28,13 @@ const profileSlice = createSlice({
       })
       .addCase(fetchProfileData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload
+        state.data = action.payload;
       })
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
-  }
+  },
 });
 
 export const { actions: profileActions } = profileSlice;

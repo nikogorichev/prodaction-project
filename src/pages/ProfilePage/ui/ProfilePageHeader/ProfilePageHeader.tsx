@@ -13,7 +13,7 @@ const ProfilePageHeader = () => {
   };
 
   const onCancelEdit = () => {
-    dispatch(profileActions.setReadonly(true));
+    dispatch(profileActions.cancelEdit());
   };
   return (
     <div className={styles.header}>

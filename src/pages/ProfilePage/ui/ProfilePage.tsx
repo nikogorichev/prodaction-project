@@ -1,7 +1,7 @@
 import {
   fetchProfileData,
-  getProfileData,
   getProfileError,
+  getProfileForm,
   getProfileLoading,
   getProfileReadonly,
   profileActions,
@@ -24,7 +24,7 @@ const initialReducers: ReducersList = {
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
-  const data = useSelector(getProfileData);
+  const form = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileLoading);
   const error = useSelector(getProfileError);
 
@@ -52,7 +52,7 @@ const ProfilePage = () => {
       <div>
         <ProfilePageHeader />
         <ProfileCard
-          data={data}
+          data={form}
           isLoading={isLoading}
           error={error}
           readonly={readonly}

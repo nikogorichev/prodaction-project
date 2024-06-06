@@ -10,10 +10,12 @@ interface ProfileCardProps {
   isLoading?: boolean;
   error?: string;
   readonly?: boolean;
-  onChangeFirstname: (value: string) => void;
-  onChangeLastname: (value: string) => void;
-  onChangeAge: (value: string) => void;
-  onChangeCity: (value: string) => void;
+  onChangeFirstname?: (value: string) => void;
+  onChangeLastname?: (value: string) => void;
+  onChangeAge?: (value: string) => void;
+  onChangeCity?: (value: string) => void;
+  onChangeAvatar?: (value: string) => void;
+  onChangeUsername?: (value: string) => void;
 }
 
 export const ProfileCard = ({
@@ -24,7 +26,9 @@ export const ProfileCard = ({
   onChangeFirstname,
   onChangeLastname,
   onChangeAge,
-  onChangeCity
+  onChangeCity,
+  onChangeAvatar,
+  onChangeUsername,
 }: ProfileCardProps) => {
   if (isLoading) {
     return (
@@ -49,6 +53,7 @@ export const ProfileCard = ({
 
   return (
     <div className={styles.profileCard}>
+      {data?.avatar ? <img src={data?.avatar} /> : ""}
       <Input
         value={data?.first}
         placeholder="Ваше имя"
@@ -75,6 +80,20 @@ export const ProfileCard = ({
         placeholder="Город"
         className={styles.input}
         onChange={onChangeCity}
+        readonly={readonly}
+      />
+      <Input
+        value={data?.username}
+        placeholder="Имя пользователя"
+        className={styles.input}
+        onChange={onChangeUsername}
+        readonly={readonly}
+      />
+      <Input
+        value={data?.avatar}
+        placeholder="Введите ссылку на аватар"
+        className={styles.input}
+        onChange={onChangeAvatar}
         readonly={readonly}
       />
     </div>

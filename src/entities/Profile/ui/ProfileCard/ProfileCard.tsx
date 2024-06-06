@@ -4,6 +4,7 @@ import { Input } from "shared/ui/Input/Input";
 import { Profile } from "entities/Profile/model/types/profile";
 import Loader from "shared/ui/Loader/Loader";
 import { classNames } from "shared/lib/classNames/classNames";
+import { Avatar } from "shared/ui/Avatar/Avatar";
 
 interface ProfileCardProps {
   data?: Profile;
@@ -53,7 +54,13 @@ export const ProfileCard = ({
 
   return (
     <div className={styles.profileCard}>
-      {data?.avatar ? <img src={data?.avatar} /> : ""}
+      {data?.avatar ? (
+        <div className={styles.avatarWrapper}>
+          <Avatar src={data?.avatar} />
+        </div>
+      ) : (
+        ""
+      )}
       <Input
         value={data?.first}
         placeholder="Ваше имя"

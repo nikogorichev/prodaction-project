@@ -57,7 +57,7 @@ export const ProfileCard = ({
   }
 
   return (
-    <div className={styles.profileCard}>
+    <div className={classNames(styles.profileCard, mods)}>
       {data?.avatar ? (
         <div className={styles.avatarWrapper}>
           <Avatar src={data?.avatar} />

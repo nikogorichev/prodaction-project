@@ -47,6 +47,21 @@ const ProfilePage = () => {
     },
     [dispatch]
   );
+
+  const onChangeAge = useCallback(
+    (value: string) => {
+      const valideValue = value.replace(/\D/g, "");
+      dispatch(profileActions.updateProfile({ age: Number(valideValue || 0) }));
+    },
+    [dispatch]
+  );
+
+  const onChangeCity = useCallback(
+    (value: string) => {
+      dispatch(profileActions.updateProfile({ city: value }));
+    },
+    [dispatch]
+  );
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div>
@@ -58,6 +73,8 @@ const ProfilePage = () => {
           readonly={readonly}
           onChangeFirstname={onChangeFirstname}
           onChangeLastname={onChangeLastname}
+          onChangeAge={onChangeAge}
+          onChangeCity={onChangeCity}
         />
       </div>
     </DynamicModuleLoader>

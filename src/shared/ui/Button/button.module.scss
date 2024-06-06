@@ -41,6 +41,12 @@
   padding: 0;
 }
 
+.outline_red {
+  border: 1px solid var(--red-light);
+  color: var(--red-light);
+  background: none;
+}
+
 .square.size_m {
   width: var(--font-line-m);
   height: var(--font-line-m);

@@ -1,4 +1,3 @@
-import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
 import styles from "./ProfileCard.module.scss";
 import { Input } from "shared/ui/Input/Input";
@@ -13,6 +12,8 @@ interface ProfileCardProps {
   readonly?: boolean;
   onChangeFirstname: (value: string) => void;
   onChangeLastname: (value: string) => void;
+  onChangeAge: (value: string) => void;
+  onChangeCity: (value: string) => void;
 }
 
 export const ProfileCard = ({
@@ -22,6 +23,8 @@ export const ProfileCard = ({
   readonly,
   onChangeFirstname,
   onChangeLastname,
+  onChangeAge,
+  onChangeCity
 }: ProfileCardProps) => {
   if (isLoading) {
     return (
@@ -58,6 +61,20 @@ export const ProfileCard = ({
         placeholder="Ваша фамилия"
         className={styles.input}
         onChange={onChangeLastname}
+        readonly={readonly}
+      />
+      <Input
+        value={data?.age}
+        placeholder="Ваш возраст"
+        className={styles.input}
+        onChange={onChangeAge}
+        readonly={readonly}
+      />
+      <Input
+        value={data?.city}
+        placeholder="Город"
+        className={styles.input}
+        onChange={onChangeCity}
         readonly={readonly}
       />
     </div>

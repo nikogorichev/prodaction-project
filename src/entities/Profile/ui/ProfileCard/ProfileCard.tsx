@@ -3,7 +3,7 @@ import styles from "./ProfileCard.module.scss";
 import { Input } from "shared/ui/Input/Input";
 import { Profile } from "entities/Profile/model/types/profile";
 import Loader from "shared/ui/Loader/Loader";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 
 interface ProfileCardProps {
@@ -50,6 +50,10 @@ export const ProfileCard = ({
         />
       </div>
     );
+  }
+
+  const mods: Mods = {
+    [styles.editing]: !readonly
   }
 
   return (

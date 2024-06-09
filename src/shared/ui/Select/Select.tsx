@@ -39,7 +39,11 @@ export const Select = ({
   return (
     <div className={classNames(styles.wrapper, {}, [className])}>
       {label ? <span className={styles.label}>{label}</span> : ""}
-      <select className={styles.select} onChange={onChangeHandler}>
+      <select
+        className={styles.select}
+        onChange={onChangeHandler}
+        value={value}
+      >
         {optionsList}
       </select>
     </div>

@@ -5,6 +5,8 @@ import { Profile } from "entities/Profile/model/types/profile";
 import Loader from "shared/ui/Loader/Loader";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
+import { Select } from "shared/ui/Select/Select";
+import { Currency } from "entities/Currency";
 
 interface ProfileCardProps {
   data?: Profile;
@@ -53,8 +55,8 @@ export const ProfileCard = ({
   }
 
   const mods: Mods = {
-    [styles.editing]: !readonly
-  }
+    [styles.editing]: !readonly,
+  };
 
   return (
     <div className={classNames(styles.profileCard, mods)}>
@@ -106,6 +108,14 @@ export const ProfileCard = ({
         className={styles.input}
         onChange={onChangeAvatar}
         readonly={readonly}
+      />
+      <Select
+        label="Укажите валюту"
+        options={[
+          { value: Currency.RUB, content: Currency.RUB },
+          { value: Currency.EUR, content: Currency.EUR },
+          { value: Currency.USD, content: Currency.USD },
+        ]}
       />
     </div>
   );

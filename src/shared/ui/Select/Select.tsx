@@ -12,6 +12,7 @@ interface SelectTypes {
   label?: string;
   options?: SelectOption[];
   value?: string;
+  readonly?: boolean
   onChange?: (value: string) => void;
 }
 
@@ -20,6 +21,7 @@ export const Select = ({
   label,
   options,
   value,
+  readonly,
   onChange,
 }: SelectTypes) => {
   const optionsList = useMemo(() => {
@@ -43,6 +45,7 @@ export const Select = ({
         className={styles.select}
         onChange={onChangeHandler}
         value={value}
+        disabled={readonly}
       >
         {optionsList}
       </select>

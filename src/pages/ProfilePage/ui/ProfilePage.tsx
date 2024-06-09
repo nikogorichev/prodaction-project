@@ -17,6 +17,7 @@ import {
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import ProfilePageHeader from "./ProfilePageHeader/ProfilePageHeader";
+import { Currency } from "entities/Currency";
 
 const initialReducers: ReducersList = {
   profile: profileReducer,
@@ -76,6 +77,13 @@ const ProfilePage = () => {
     },
     [dispatch]
   );
+
+  const onChangeCurrency = useCallback(
+    (value: Currency) => {
+      dispatch(profileActions.updateProfile({ currency: value }));
+    },
+    [dispatch]
+  );
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div>
@@ -91,6 +99,7 @@ const ProfilePage = () => {
           onChangeCity={onChangeCity}
           onChangeAvatar={onChangeAvatar}
           onChangeUsername={onChangeUsername}
+          onChangeCurrency={onChangeCurrency}
         />
       </div>
     </DynamicModuleLoader>

@@ -10,10 +10,17 @@ const options = [
 
 interface CurrencySelectProps {
   value?: Currency;
-  onChange: (value: Currency) => void;
+  onChange?: (value: Currency) => void;
+  readonly?: boolean;
+  className?: string;
 }
 
-export const CurrencySelect = ({ value, onChange }: CurrencySelectProps) => {
+export const CurrencySelect = ({
+  value,
+  onChange,
+  readonly,
+  className,
+}: CurrencySelectProps) => {
   const handleOnChange = (value: string) => {
     onChange?.(value as Currency);
   };
@@ -23,6 +30,8 @@ export const CurrencySelect = ({ value, onChange }: CurrencySelectProps) => {
       options={options}
       value={value}
       onChange={handleOnChange}
+      readonly={readonly}
+      className={className}
     />
   );
 };

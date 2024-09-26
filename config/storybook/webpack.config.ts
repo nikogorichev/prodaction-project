@@ -33,6 +33,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
     });
   }
   config.module?.rules?.push(buildCssLoaders(true));
-  config.plugins?.push(new DefinePlugin({ __IS_DEV__: true }));
+  config.plugins?.push(new DefinePlugin({ __IS_DEV__: true, __PROJECT__: "storybook" }));
   return config;
 };

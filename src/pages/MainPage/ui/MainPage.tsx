@@ -84,19 +84,10 @@ const MainPage = () => {
   // }, [isTimeActive]);
 
   return (
-    <div>
+    <>
       <Text title={t("Главная")} text="обычный текст" />
-      <Input value={value} onChange={handleChange} />
-      <br />
-      <br />
-
-      <br />
-
-      <br />
-
-      <br />
-
-      <br />
+      {/* <Input value={value} onChange={handleChange} /> */}
+      
 
       {/* <div className="timer-container">
         <div>{humanizeTime(timeMs)}</div>
@@ -111,7 +102,7 @@ const MainPage = () => {
       <button onClick={startCounter}>Начать</button>
       <button onClick={pauseCounter}>Пауза</button>
       <button onClick={resetCounter}>Сбросить</button> */}
-    </div>
+    </>
   );
 };
 

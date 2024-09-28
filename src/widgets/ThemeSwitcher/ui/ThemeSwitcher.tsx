@@ -13,6 +13,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   const iconsThemeList: Record<Theme, JSX.Element> = {
     [Theme.DARK]: <DarkIcon />,
     [Theme.LIGHT]: <LightIcon />,
+    [Theme.ORANGE]: <LightIcon />,
   };
 
   return (

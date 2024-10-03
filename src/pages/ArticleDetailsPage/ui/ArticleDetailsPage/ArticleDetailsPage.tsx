@@ -1,5 +1,7 @@
+import { ArticleDetails } from "entities/Article";
+
 const ArticleDetailsPage = () => {
-  return <div>ArticleDetailsPage</div>;
+  return <ArticleDetails />;
 };
 
 export default ArticleDetailsPage;

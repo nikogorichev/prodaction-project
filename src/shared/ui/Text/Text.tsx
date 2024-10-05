@@ -12,12 +12,18 @@ export enum TextAlign {
   CENTER = "center",
 }
 
+export enum TextSize {
+  M = "size_m",
+  L = "size_l",
+}
+
 interface TextProps {
   className?: string;
   title?: string;
   text?: string;
   theme?: TextTheme;
   align?: TextAlign;
+  size?: TextSize;
 }
 
 export const Text = ({
@@ -26,8 +32,15 @@ export const Text = ({
   text,
   theme = TextTheme.PRIMARY,
   align = TextAlign.LEFT,
+  size = TextSize.M,
 }: TextProps) => {
-  const additionalStyles = [className, styles[theme], styles[align]];
+  const additionalStyles = [
+    className,
+    styles[theme],
+    styles[align],
+    styles[size],
+  ];
+
   return (
     <div className={classNames(styles.wrapper, {}, additionalStyles)}>
       {title && <p className={styles.title}>{title}</p>}

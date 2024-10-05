@@ -14,8 +14,12 @@ import {
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import styles from "./ArticleDetails.module.scss";
-import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
+import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
 import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import { Avatar } from "shared/ui/Avatar/Avatar";
+import EyeIcon from "shared/assets/icons/view-20-20.svg";
+import CalendarIcon from "shared/assets/icons/date-20-20.svg";
+import { Icon } from "shared/ui/Icon/Icon";
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
@@ -53,9 +57,7 @@ export const ArticleDetails = (props: Props) => {
         <Skeleton className={styles.skeleton} width="100%" height={200} />
       </>
     );
-  }
-
-  if (error) {
+  } else if (error) {
     content = (
       <Text
         theme={TextTheme.ERROR}
@@ -63,11 +65,32 @@ export const ArticleDetails = (props: Props) => {
         align={TextAlign.CENTER}
       />
     );
-  }
-
-  if (article) {
+  } else {
     content = (
-      <div className={classNames(styles.articleDetails)}>Article222Details</div>
+      <>
+        <div className={styles.avatarWrapper}>
+          <Avatar
+            size={200}
+            src={article?.img || ""}
+            className={styles.avatar}
+          />
+        </div>
+
+        <Text
+          title={article?.title}
+          text={article?.subtitle}
+          className={styles.title}
+          size={TextSize.L}
+        />
+        <div className={styles.articleInfo}>
+          <Icon Svg={EyeIcon} className={styles.icon} />
+          <Text text={String(article?.views)} />
+        </div>
+        <div className={styles.articleInfo}>
+          <Icon Svg={CalendarIcon} className={styles.icon} />
+          <Text text={article?.createdAt} />
+        </div>
+      </>
     );
   }
 

@@ -8,5 +8,5 @@ type Props = {
 
 export const ArticleCodeBlockComponent = (props: Props) => {
   const { block, className } = props;
-  return <Code className={className}>{block.code}</Code>;
+  return <Code className={className} text={block.code}/>;
 };

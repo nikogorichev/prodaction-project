@@ -1,4 +1,7 @@
+import { ArticleImageBlock } from "../../model/types/article";
+
 type Props = {
+  block: ArticleImageBlock
   className?: string;
 };
 

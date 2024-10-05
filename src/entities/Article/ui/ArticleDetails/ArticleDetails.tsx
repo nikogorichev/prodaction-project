@@ -7,7 +7,6 @@ import { fetchArticleById } from "entities/Article/model/services/fetchArticleBy
 import { articleDetailsReducer } from "entities/Article/model/slice/articleDetailsSlice";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -20,6 +19,10 @@ import { Avatar } from "shared/ui/Avatar/Avatar";
 import EyeIcon from "shared/assets/icons/view-20-20.svg";
 import CalendarIcon from "shared/assets/icons/date-20-20.svg";
 import { Icon } from "shared/ui/Icon/Icon";
+import { ArticleBlock, ArticleBlockType } from "../../model/types/article";
+import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent";
+import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
+import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
@@ -90,6 +93,7 @@ export const ArticleDetails = (props: Props) => {
           <Icon Svg={CalendarIcon} className={styles.icon} />
           <Text text={article?.createdAt} />
         </div>
+        {article?.blocks.map(renderBlock)}
       </>
     );
   }
@@ -99,4 +103,19 @@ export const ArticleDetails = (props: Props) => {
       {content}
     </DynamicModuleLoader>
   );
+};
+
+const renderBlock = (block: ArticleBlock) => {
+  switch (block.type) {
+    case ArticleBlockType.CODE:
+      return <ArticleCodeBlockComponent className={styles.block}/>;
+    case ArticleBlockType.IMAGE:
+      return <ArticleImageBlockComponent className={styles.block} />;
+    case ArticleBlockType.TEXT:
+      return (
+        <ArticleTextBlockComponent className={styles.block} block={block} />
+      );
+    default:
+      return null;
+  }
 };

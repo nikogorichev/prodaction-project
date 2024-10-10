@@ -23,6 +23,7 @@ const ArticleDetailsPage = () => {
             user: {
               id: "1",
               username: "test",
+              avatar: "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg"
             },
           },
           {

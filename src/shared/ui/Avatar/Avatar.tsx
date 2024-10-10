@@ -3,7 +3,7 @@ import styles from "./Avatar.module.scss";
 import { useMemo } from "react";
 
 interface AvatarProps {
-  src: string;
+  src?: string;
   className?: string;
   size?: number;
   alt?: string;

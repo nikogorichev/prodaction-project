@@ -1,6 +1,8 @@
 import { ArticleDetails } from "entities/Article";
+import { CommentList } from "entities/Comment";
 import { useParams } from "react-router-dom";
 import { Text } from "shared/ui/Text/Text";
+import styles from "./ArticleDetailsPage.module.scss";
 
 const ArticleDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -8,8 +10,33 @@ const ArticleDetailsPage = () => {
   if (!id) {
     return <Text text="Статья не найдена" />;
   }
-  
-  return <ArticleDetails id={id} />;
+
+  return (
+    <div className={styles.ArticleDetailsPage}>
+      <ArticleDetails id={id} />
+      <Text title="Комментарии" className={styles.commentTitle} />
+      <CommentList
+        comments={[
+          {
+            id: "1",
+            text: "comment 1",
+            user: {
+              id: "1",
+              username: "test",
+            },
+          },
+          {
+            id: "2",
+            text: "comment 2",
+            user: {
+              id: "2",
+              username: "dev",
+            },
+          },
+        ]}
+      />
+    </div>
+  );
 };
 
 export default ArticleDetailsPage;

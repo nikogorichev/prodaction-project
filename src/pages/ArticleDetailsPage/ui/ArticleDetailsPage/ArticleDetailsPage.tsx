@@ -16,25 +16,7 @@ const ArticleDetailsPage = () => {
       <ArticleDetails id={id} />
       <Text title="Комментарии" className={styles.commentTitle} />
       <CommentList
-        comments={[
-          {
-            id: "1",
-            text: "comment 1",
-            user: {
-              id: "1",
-              username: "test",
-              avatar: "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg"
-            },
-          },
-          {
-            id: "2",
-            text: "comment 2",
-            user: {
-              id: "2",
-              username: "dev",
-            },
-          },
-        ]}
+        comments={[]}
       />
     </div>
   );

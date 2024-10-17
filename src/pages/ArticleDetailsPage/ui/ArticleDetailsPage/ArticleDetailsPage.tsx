@@ -11,11 +11,13 @@ import {
   articleDetailsCommentsReducer,
   getArticleComments,
 } from "../../model/slice/articleDetailsCommentsSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getArticleCommentsError,
   getArticleCommentsIsLoading,
 } from "../../model/selectors/comments";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 
 const reducersList: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
@@ -24,8 +26,11 @@ const reducersList: ReducersList = {
 const ArticleDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const comments = useSelector(getArticleComments.selectAll);
+  const dispath = useDispatch()
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
   const commentsError = useSelector(getArticleCommentsError);
+
+  useInitialEffect(() => dispath(fetchCommentsByArticleId(id)));
 
   if (!id) {
     return <Text text="Статья не найдена" />;

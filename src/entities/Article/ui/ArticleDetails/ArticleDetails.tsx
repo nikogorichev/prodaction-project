@@ -23,6 +23,7 @@ import { ArticleBlock, ArticleBlockType } from "../../model/types/article";
 import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent";
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
@@ -39,9 +40,7 @@ export const ArticleDetails = (props: Props) => {
   const article = useSelector(getArticleDetailsData);
   const error = useSelector(getArticleDetailsError);
 
-  useEffect(() => {
-    dispath(fetchArticleById(id));
-  }, [dispath, id]);
+  useInitialEffect(() => dispath(fetchArticleById(id)));
 
   let content;
 

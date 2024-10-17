@@ -25,7 +25,7 @@ export const CommentCard = (props: Props) => {
       </div>
     );
   }
-
+  
   return (
     <div className={classNames(styles.commentCard, {}, [className])}>
       <div className={styles.header}>

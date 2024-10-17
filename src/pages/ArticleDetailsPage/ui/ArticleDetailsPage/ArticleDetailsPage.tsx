@@ -26,11 +26,11 @@ const reducersList: ReducersList = {
 const ArticleDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const comments = useSelector(getArticleComments.selectAll);
-  const dispath = useDispatch()
+  const dispath = useDispatch();
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
   const commentsError = useSelector(getArticleCommentsError);
 
-  useInitialEffect(() => dispath(fetchCommentsByArticleId(id)));
+  useInitialEffect(() => dispath(fetchCommentsByArticleId(id)), [id]);
 
   if (!id) {
     return <Text text="Статья не найдена" />;

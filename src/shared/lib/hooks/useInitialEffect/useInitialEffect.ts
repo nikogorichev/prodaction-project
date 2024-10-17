@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { DependencyList, useEffect } from "react";
 
-export function useInitialEffect(callback: () => void) {
+export function useInitialEffect(callback: () => void, deps: DependencyList = []) {
   useEffect(() => {
     if (__PROJECT__ !== "storybook") {
       callback();
     }
-  }, []);
+  }, deps);
 }

@@ -118,14 +118,28 @@
       "avatar": "https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
     }
   ],
-  "profile": {
-    "first": "Николай3213",
-    "lastname": "Горичев3131",
-    "age": 273131,
-    "currency": "EUR",
-    "country": "Russia",
-    "city": "Saint-Petersburg3",
-    "username": "admin",
-    "avatar": "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Николай3213",
+      "lastname": "Горичев3131",
+      "age": 273131,
+      "currency": "EUR",
+      "country": "Russia",
+      "city": "Saint-Petersburg3",
+      "username": "admin",
+      "avatar": "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Ivan",
+      "lastname": "Ivanov",
+      "age": 19,
+      "currency": "EUR",
+      "country": "Russia",
+      "city": "Saint-Petersburg",
+      "username": "test",
+      "avatar": "https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
+    }
+  ]
 }

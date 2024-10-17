@@ -20,6 +20,8 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import ProfilePageHeader from "./ProfilePageHeader/ProfilePageHeader";
 import { Currency } from "entities/Currency";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { useParams } from "react-router-dom";
 
 const initialReducers: ReducersList = {
   profile: profileReducer,
@@ -32,12 +34,12 @@ const ProfilePage = () => {
   const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateError);
-
-  useEffect(() => {
-    if(__PROJECT__ !== "storybook") {
-      dispatch(fetchProfileData());
-    }
-  }, [dispatch]);
+  const { id } = useParams<{ id: string }>();
+console.log("1111111")
+  useInitialEffect(() => {
+    console.log(id)
+    id && dispatch(fetchProfileData(id));
+  }, [id]);
 
   const onChangeFirstname = useCallback(
     (value: string) => {

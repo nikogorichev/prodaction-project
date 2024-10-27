@@ -17,16 +17,17 @@ import {
 } from "../../model/selectors/addCommentFormSelectors";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
-type Props = {
+export type AddCommentFormProps = {
   className?: string;
+  onSendComment: (text: string) => void
 };
 
 const reducersList: ReducersList = {
   addCommentFormSchema: addCommentFormReducer,
 };
 
-const AddCommentForm = (props: Props) => {
-  const { className } = props;
+const AddCommentForm = (props: AddCommentFormProps) => {
+  const { className, onSendComment } = props;
   const dispath = useAppDispatch();
   const textValue = useSelector(getAddCommentFormText);
   const error = useSelector(getAddCommentFormError);
@@ -34,6 +35,12 @@ const AddCommentForm = (props: Props) => {
   const onCommentTextChange = (value: string) => {
     dispath(addCommentFormActions.setText(value));
   };
+
+  const onSendHandler = () => {
+    textValue && onSendComment(textValue)
+    onCommentTextChange("")
+  }
+
   return (
     <DynamicModuleLoader reducers={reducersList}>
       <div className={classNames(styles.wrapper, {}, [className])}>
@@ -41,11 +48,12 @@ const AddCommentForm = (props: Props) => {
           placeholder="Введите текст комментария"
           value={textValue}
           onChange={onCommentTextChange}
+          className={styles.input}
         />
-        <Button>Отправить</Button>
+        <Button onClick={onSendHandler}>Отправить</Button>
       </div>
     </DynamicModuleLoader>
   );
 };
 
-export default AddCommentForm
+export default AddCommentForm;

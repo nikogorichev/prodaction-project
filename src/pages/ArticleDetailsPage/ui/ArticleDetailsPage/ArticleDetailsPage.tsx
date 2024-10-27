@@ -18,6 +18,8 @@ import {
 } from "../../model/selectors/comments";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { AddCommentForm } from "features/addCommentForm";
+import { addCommentForArticle } from "pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle";
 
 const reducersList: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
@@ -32,6 +34,10 @@ const ArticleDetailsPage = () => {
 
   useInitialEffect(() => dispath(fetchCommentsByArticleId(id)), [id]);
 
+  const onSendComment = (text: string) => {
+    dispath(addCommentForArticle(text));
+  };
+
   if (!id) {
     return <Text text="Статья не найдена" />;
   }
@@ -41,6 +47,7 @@ const ArticleDetailsPage = () => {
       <div className={styles.ArticleDetailsPage}>
         <ArticleDetails id={id} />
         <Text title="Комментарии" className={styles.commentTitle} />
+        <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={commentsIsLoading} />
       </div>
     </DynamicModuleLoader>

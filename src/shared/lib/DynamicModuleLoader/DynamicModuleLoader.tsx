@@ -19,7 +19,7 @@ type ReducersListEntry = [StateSchemaKey, Reducer];
 export const DynamicModuleLoader = ({
   children,
   reducers,
-  removeAfterUnmount,
+  removeAfterUnmount = true,
 }: DynamicModuleLoaderProps) => {
   const dispatch = useDispatch();
   const store = useStore() as ReduxStoreManager;

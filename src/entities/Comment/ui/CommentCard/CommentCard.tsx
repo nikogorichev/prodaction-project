@@ -8,7 +8,7 @@ import { AppLink } from "shared/ui/AppLink/AppLink";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 type Props = {
-  comment: Comment;
+  comment?: Comment;
   className?: string;
   isLoading?: boolean;
 };
@@ -27,10 +27,17 @@ export const CommentCard = (props: Props) => {
       </div>
     );
   }
-  
+
+  if (!comment) {
+    return null;
+  }
+
   return (
-    <div className={classNames(styles.commentCard, {}, [className])}>
-      <AppLink className={styles.header} to={`${RoutePath.profile}${comment.user.id}`}>
+    <div className={classNames(styles.commentCard, {}, [className, styles.loading])}>
+      <AppLink
+        className={styles.header}
+        to={`${RoutePath.profile}${comment.user.id}`}
+      >
         {comment.user.avatar ? (
           <Avatar size={30} src={comment.user.avatar} />
         ) : (

@@ -12,6 +12,16 @@ type Props = {
 
 export const CommentList = (props: Props) => {
   const { comments, className, isLoading } = props;
+
+  if (isLoading) {
+    return (
+      <div className={classNames(styles.wrapper, {}, [className])}>
+        <CommentCard isLoading />
+        <CommentCard isLoading />
+        <CommentCard isLoading />
+      </div>
+    );
+  }
   return (
     <div className={classNames(styles.wrapper, {}, [className])}>
       {comments?.length ? (

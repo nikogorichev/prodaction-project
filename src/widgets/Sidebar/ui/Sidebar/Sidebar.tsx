@@ -4,17 +4,16 @@ import { useState } from "react";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import { Button, ButtonSize, ThemeButton } from "shared/ui/Button/Button";
-import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import AboutIcon from "shared/assets/icons/about-20-20.svg";
-import MainIcon from "shared/assets/icons/main-20-20.svg";
-import { SidebarItemList } from "widgets/Sidebar/model/items";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
+import { useSelector } from "react-redux";
+import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 
 type SidebarProps = { className?: string };
 
 export const Sidebar = ({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const sidebarItemList = useSelector(getSidebarItems);
 
   const onToggle = () => {
     setCollapsed((prev) => !prev);
@@ -38,7 +37,9 @@ export const Sidebar = ({ className }: SidebarProps) => {
         {collapsed ? ">" : "<"}
       </Button>
       <div className={styles.items}>
-        {SidebarItemList.map((item) => <SidebarItem key={item.path} item={item} collapsed={collapsed}/>)}
+        {sidebarItemList.map((item) => (
+          <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+        ))}
       </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />

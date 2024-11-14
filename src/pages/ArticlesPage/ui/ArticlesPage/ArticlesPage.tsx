@@ -9,7 +9,7 @@ const articleMock = {
   img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
   views: 1022,
   createdAt: "26.02.2022",
-  type: ["IT"],
+  type: ["IT", "Testing", "devOps", "Data"],
   blocks: [
     {
       id: "1",
@@ -75,7 +75,12 @@ const articleMock = {
 const ArticlesPage = () => {
   return (
     <div className={classNames(styles.wrapper)}>
-      <ArticleList articles={[articleMock]} />
+      <ArticleList
+        articles={new Array(16).fill(0).map((item, index) => ({
+          ...articleMock,
+          id: String(index),
+        }))}
+      />
     </div>
   );
 };

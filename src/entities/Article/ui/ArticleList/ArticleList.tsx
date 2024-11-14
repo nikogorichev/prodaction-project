@@ -16,7 +16,7 @@ export const ArticleList = (props: Props) => {
   const renderArticle = (article: Article) => (
     <ArticleListItem article={article} view={view} />
   );
-  
+
   return (
     <div className={classNames(styles.wrapper, {}, [className])}>
       {articles.length > 0 ? articles.map(renderArticle) : null}

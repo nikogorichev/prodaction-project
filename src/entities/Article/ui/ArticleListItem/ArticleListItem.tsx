@@ -4,6 +4,7 @@ import styles from "./ArticleListItem.module.scss";
 import { Text } from "shared/ui/Text/Text";
 import { Icon } from "shared/ui/Icon/Icon";
 import EyeIcon from "shared/assets/icons/view-20-20.svg";
+import { Card } from "shared/ui/Card/Card";
 
 type Props = {
   className?: string;
@@ -26,7 +27,7 @@ export const ArticleListItem = (props: Props) => {
 
   return (
     <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>
-      <div className={styles.card}>
+      <Card>
         <div className={styles.imageWrapper}>
           <img src={article.img} className={styles.img} alt={article.title} />
           <Text text={article.createdAt} className={styles.date} />
@@ -37,7 +38,7 @@ export const ArticleListItem = (props: Props) => {
           <Icon Svg={EyeIcon} />
         </div>
         <Text text={article.title} className={styles.title} />
-      </div>
+      </Card>
     </div>
   );
 };

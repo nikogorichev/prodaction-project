@@ -14,6 +14,7 @@ import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
+import { Avatar } from "shared/ui/Avatar/Avatar";
 
 type Props = {
   className?: string;
@@ -75,15 +76,14 @@ export const ArticleListItem = (props: Props) => {
 
   return (
     <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>
-      <Card>
+      <Card onClick={onOpenArticle}>
         <div className={styles.imageWrapper}>
           <img src={article.img} className={styles.img} alt={article.title} />
           <Text text={article.createdAt} className={styles.date} />
         </div>
         <div className={styles.infoWrapper}>
-          <Text text={article.type.join(", ")} className={styles.types} />
-          <Text text={String(article.views)} className={styles.views} />
-          <Icon Svg={EyeIcon} />
+          {types}
+          {views}
         </div>
         <Text text={article.title} className={styles.title} />
       </Card>

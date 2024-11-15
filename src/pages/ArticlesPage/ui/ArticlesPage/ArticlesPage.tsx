@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./ArticlesPage.module.scss";
-import { Article, ArticleList } from "entities/Article";
+import { Article, ArticleList, ArticleView } from "entities/Article";
 
 const articleMock = {
   id: "1",
@@ -8,6 +8,12 @@ const articleMock = {
   subtitle: "Что нового в JS за 2022 год?",
   img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
   views: 1022,
+  user: {
+    id: "1",
+    username: "Ulbi TV",
+    avatar:
+      "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg",
+  },
   createdAt: "26.02.2022",
   type: ["IT", "Testing", "devOps", "Data"],
   blocks: [
@@ -76,6 +82,7 @@ const ArticlesPage = () => {
   return (
     <div className={classNames(styles.wrapper)}>
       <ArticleList
+        view={ArticleView.LIST}
         articles={new Array(16).fill(0).map((item, index) => ({
           ...articleMock,
           id: String(index),

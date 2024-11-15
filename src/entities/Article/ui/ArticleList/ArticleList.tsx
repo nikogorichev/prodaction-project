@@ -14,11 +14,11 @@ export const ArticleList = (props: Props) => {
   const { className, articles, isLoading, view = ArticleView.GRID } = props;
 
   const renderArticle = (article: Article) => (
-    <ArticleListItem article={article} view={view} />
+    <ArticleListItem article={article} view={view} key={article.id} />
   );
 
   return (
-    <div className={classNames(styles.wrapper, {}, [className])}>
+    <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>
       {articles.length > 0 ? articles.map(renderArticle) : null}
     </div>
   );

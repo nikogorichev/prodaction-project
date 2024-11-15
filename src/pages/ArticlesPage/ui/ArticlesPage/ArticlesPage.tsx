@@ -82,7 +82,7 @@ const ArticlesPage = () => {
   return (
     <div className={classNames(styles.wrapper)}>
       <ArticleList
-        view={ArticleView.LIST}
+        view={ArticleView.GRID}
         articles={new Array(16).fill(0).map((item, index) => ({
           ...articleMock,
           id: String(index),

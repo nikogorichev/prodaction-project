@@ -1,12 +1,18 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./ArticlesPage.module.scss";
 import { useSelector } from "react-redux";
-import { Article, ArticleList } from "entities/Article";
+import {
+  Article,
+  ArticleList,
+  ArticleView,
+  ArticleViewSelector,
+} from "entities/Article";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 import {
+  articlesPageActions,
   articlesPageReducer,
   getArticles,
 } from "../../model/slices/articlesPageSlice";
@@ -32,11 +38,17 @@ const ArticlesPage = () => {
 
   useInitialEffect(() => {
     dispatch(fetchArticleList());
+    dispatch(articlesPageActions.initState());
   });
+
+  const onViewClick = (view: ArticleView) => {
+    dispatch(articlesPageActions.setView(view));
+  };
 
   return (
     <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(styles.wrapper)}>
+        <ArticleViewSelector view={view} onViewClick={onViewClick} />
         <ArticleList view={view} articles={articles} isLoading={isLoading} />
       </div>
     </DynamicModuleLoader>

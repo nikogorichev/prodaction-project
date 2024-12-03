@@ -37,8 +37,12 @@ const ArticlesPage = () => {
   const view = useSelector(getArticlesPageView);
 
   useInitialEffect(() => {
-    dispatch(fetchArticleList());
     dispatch(articlesPageActions.initState());
+    dispatch(
+      fetchArticleList({
+        page: 1,
+      })
+    );
   });
 
   const onViewClick = (view: ArticleView) => {

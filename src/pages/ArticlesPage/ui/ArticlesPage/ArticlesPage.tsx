@@ -21,7 +21,9 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { fetchArticleList } from "../../model/services/fetchArticlesList";
 import {
   getArticlesPageError,
+  getArticlesPageHasMore,
   getArticlesPageIsLoading,
+  getArticlesPageNum,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { Page } from "shared/ui/Page/Page";
@@ -36,6 +38,8 @@ const ArticlesPage = () => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
+  const page = useSelector(getArticlesPageNum);
+  const hasMore = useSelector(getArticlesPageHasMore);
 
   useInitialEffect(() => {
     dispatch(articlesPageActions.initState());
@@ -50,9 +54,20 @@ const ArticlesPage = () => {
     dispatch(articlesPageActions.setView(view));
   };
 
+  const onLoadNextPart = () => {
+    if (hasMore && !isLoading) {
+      dispatch(
+        fetchArticleList({
+          page: page + 1,
+        })
+      );
+      dispatch(articlesPageActions.setPage(page + 1));
+    }
+  };
+
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <Page className={classNames(styles.wrapper)}>
+      <Page className={classNames(styles.wrapper)} onScrollEnd={onLoadNextPart}>
         <ArticleViewSelector view={view} onViewClick={onViewClick} />
         <ArticleList view={view} articles={articles} isLoading={isLoading} />
       </Page>

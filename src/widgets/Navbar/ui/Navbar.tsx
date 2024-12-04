@@ -27,7 +27,7 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   if (authData) {
     return (
-      <div className={classNames(styles.navbar, {}, [className])}>
+      <header className={classNames(styles.navbar, {}, [className])}>
         <Button
           className={styles.links}
           theme={ThemeButton.CLEAR_INVERTED}
@@ -35,12 +35,12 @@ export const Navbar = ({ className }: NavbarProps) => {
         >
           Выйти
         </Button>
-      </div>
+      </header>
     );
   }
 
   return (
-    <div className={classNames(styles.navbar, {}, [className])}>
+    <header className={classNames(styles.navbar, {}, [className])}>
       <Button
         className={styles.links}
         theme={ThemeButton.CLEAR_INVERTED}
@@ -53,6 +53,6 @@ export const Navbar = ({ className }: NavbarProps) => {
       ) : (
         ""
       )}
-    </div>
+    </header>
   );
 };

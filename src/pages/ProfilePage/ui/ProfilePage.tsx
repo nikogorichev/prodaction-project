@@ -22,6 +22,7 @@ import { Currency } from "entities/Currency";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { useParams } from "react-router-dom";
+import { Page } from "shared/ui/Page/Page";
 
 const initialReducers: ReducersList = {
   profile: profileReducer,
@@ -92,7 +93,7 @@ console.log("1111111")
   );
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-      <div>
+      <Page>
         <ProfilePageHeader />
         {validateErrors?.length &&
           validateErrors.map((arr) => (
@@ -111,7 +112,7 @@ console.log("1111111")
           onChangeUsername={onChangeUsername}
           onChangeCurrency={onChangeCurrency}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

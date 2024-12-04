@@ -2,6 +2,7 @@ import { Counter } from "entities/Counter";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/Input/Input";
+import { Page } from "shared/ui/Page/Page";
 import { Text } from "shared/ui/Text/Text";
 
 function humanizeTime(timeMs: number = 0) {
@@ -84,7 +85,7 @@ const MainPage = () => {
   // }, [isTimeActive]);
 
   return (
-    <>
+    <Page>
       <Text title={t("Главная")} text="обычный текст" />
       {/* <Input value={value} onChange={handleChange} /> */}
       
@@ -102,7 +103,7 @@ const MainPage = () => {
       <button onClick={startCounter}>Начать</button>
       <button onClick={pauseCounter}>Пауза</button>
       <button onClick={resetCounter}>Сбросить</button> */}
-    </>
+    </Page>
   );
 };
 

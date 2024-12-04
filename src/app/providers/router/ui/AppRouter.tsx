@@ -10,7 +10,7 @@ import RequireAuth from "./RequireAuth";
 const AppRouter = () => {
   const renderWithWrapper = (route: AppRouterProps) => {
     const { path, element, authOnly } = route;
-    const page = <div className="page-wrapper">{element}</div>;
+    const page = <>{element}</>;
     return (
       <Route
         key={path}

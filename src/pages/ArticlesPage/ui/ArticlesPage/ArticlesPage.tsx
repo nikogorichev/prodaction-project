@@ -24,6 +24,7 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
+import { Page } from "shared/ui/Page/Page";
 
 const reducers: ReducersList = {
   articlePage: articlesPageReducer,
@@ -51,10 +52,10 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(styles.wrapper)}>
+      <Page className={classNames(styles.wrapper)}>
         <ArticleViewSelector view={view} onViewClick={onViewClick} />
         <ArticleList view={view} articles={articles} isLoading={isLoading} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

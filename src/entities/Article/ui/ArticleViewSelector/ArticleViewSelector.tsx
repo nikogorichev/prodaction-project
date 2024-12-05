@@ -31,7 +31,11 @@ export const ArticleViewSelector = (props: Props) => {
   return (
     <>
       {viewTypes.map((viewType) => (
-        <Button theme={ThemeButton.CLEAR} onClick={onClick(viewType.view)}>
+        <Button
+          theme={ThemeButton.CLEAR}
+          onClick={onClick(viewType.view)}
+          key={viewType.view}
+        >
           <Icon
             Svg={viewType.icon}
             className={classNames("", {

@@ -2,7 +2,6 @@ import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./ArticlesPage.module.scss";
 import { useSelector } from "react-redux";
 import {
-  Article,
   ArticleList,
   ArticleView,
   ArticleViewSelector,
@@ -18,17 +17,16 @@ import {
 } from "../../model/slices/articlesPageSlice";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { fetchArticleList } from "../../model/services/fetchArticlesList";
 import {
   getArticlesPageError,
-  getArticlesPageHasMore,
+  getArticlesPageInited,
   getArticlesPageIsLoading,
-  getArticlesPageNum,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { Page } from "shared/ui/Page/Page";
-import { fetchNextArticlePage } from "pages/ArticlesPage/model/services/fetchNextArticlePage";
+import { fetchNextArticlePage } from "../../model/services/fetchNextArticlePage";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { initArticlesPage } from "../../model/services/initArticlesPage";
 
 const reducers: ReducersList = {
   articlePage: articlesPageReducer,
@@ -40,14 +38,10 @@ const ArticlesPage = () => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
+  const inited = useSelector(getArticlesPageInited);
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(
-      fetchArticleList({
-        page: 1,
-      })
-    );
+    dispatch(initArticlesPage())
   });
 
   const onViewClick = (view: ArticleView) => {
@@ -70,7 +64,7 @@ const ArticlesPage = () => {
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page className={classNames(styles.wrapper)} onScrollEnd={onLoadNextPart}>
         <ArticleViewSelector view={view} onViewClick={onViewClick} />
         <ArticleList view={view} articles={articles} isLoading={isLoading} />

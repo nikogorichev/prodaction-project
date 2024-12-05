@@ -27,6 +27,8 @@ import {
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { Page } from "shared/ui/Page/Page";
+import { fetchNextArticlePage } from "pages/ArticlesPage/model/services/fetchNextArticlePage";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 
 const reducers: ReducersList = {
   articlePage: articlesPageReducer,
@@ -38,8 +40,6 @@ const ArticlesPage = () => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
-  const page = useSelector(getArticlesPageNum);
-  const hasMore = useSelector(getArticlesPageHasMore);
 
   useInitialEffect(() => {
     dispatch(articlesPageActions.initState());
@@ -55,15 +55,19 @@ const ArticlesPage = () => {
   };
 
   const onLoadNextPart = () => {
-    if (hasMore && !isLoading) {
-      dispatch(
-        fetchArticleList({
-          page: page + 1,
-        })
-      );
-      dispatch(articlesPageActions.setPage(page + 1));
-    }
+    dispatch(fetchNextArticlePage());
   };
+
+  if (error) {
+    return (
+      <Page>
+        <Text
+          theme={TextTheme.ERROR}
+          text="Статьи не загрузились, попробуйте обновить страницу"
+        />
+      </Page>
+    );
+  }
 
   return (
     <DynamicModuleLoader reducers={reducers}>

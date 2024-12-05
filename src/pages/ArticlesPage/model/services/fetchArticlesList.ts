@@ -11,7 +11,7 @@ export const fetchArticleList = createAsyncThunk<
   Article[],
   FetchArticleListProps,
   ThunkExtraConfig<string>
->("articleDetails/fetchCommentsByArticleId", async (args, thunkApi) => {
+>("articlePage/fetchArticleList", async (args, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
   const { page = 1 } = args;
   const limit = getArticlesPageLimit(getState());

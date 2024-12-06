@@ -11,15 +11,17 @@ import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
+import { scrollSaveReducer } from "features/ScrollSave";
 
 export const createReduxStore = (
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
+  asyncReducers?: ReducersMapObject<StateSchema>
 ) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    scrollSave: scrollSaveReducer,
   };
 
   const extraArg: ThunkExtraArg = {

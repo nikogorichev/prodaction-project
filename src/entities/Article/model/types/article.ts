@@ -1,7 +1,7 @@
 import { User } from "entities/User";
 
 export enum ArticleSortField {
-  VIEW = "views",
+  VIEWS = "views",
   TITLE = "title",
   CREATED = "created"
 }

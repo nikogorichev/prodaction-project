@@ -29,7 +29,7 @@ export const ArticleViewSelector = (props: Props) => {
   const onClick = (newView: ArticleView) => () => onViewClick?.(newView);
 
   return (
-    <>
+    <div>
       {viewTypes.map((viewType) => (
         <Button
           theme={ThemeButton.CLEAR}
@@ -44,6 +44,6 @@ export const ArticleViewSelector = (props: Props) => {
           />
         </Button>
       ))}
-    </>
+    </div>
   );
 };

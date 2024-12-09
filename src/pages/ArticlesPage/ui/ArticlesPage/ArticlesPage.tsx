@@ -1,17 +1,12 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./ArticlesPage.module.scss";
 import { useSelector } from "react-redux";
-import {
-  ArticleList,
-  ArticleView,
-  ArticleViewSelector,
-} from "entities/Article";
+import { ArticleList } from "entities/Article";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 import {
-  articlesPageActions,
   articlesPageReducer,
   getArticles,
 } from "../../model/slices/articlesPageSlice";
@@ -19,7 +14,6 @@ import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
   getArticlesPageError,
-  getArticlesPageInited,
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
@@ -27,6 +21,7 @@ import { Page } from "widgets/Page/Page";
 import { fetchNextArticlePage } from "../../model/services/fetchNextArticlePage";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { initArticlesPage } from "../../model/services/initArticlesPage";
+import { ArticlePageFilter } from "../ArticlesPageFilter/ArticlePageFilter";
 
 const reducers: ReducersList = {
   articlePage: articlesPageReducer,
@@ -38,15 +33,10 @@ const ArticlesPage = () => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
-  const inited = useSelector(getArticlesPageInited);
 
   useInitialEffect(() => {
-    dispatch(initArticlesPage())
+    dispatch(initArticlesPage());
   });
-
-  const onViewClick = (view: ArticleView) => {
-    dispatch(articlesPageActions.setView(view));
-  };
 
   const onLoadNextPart = () => {
     dispatch(fetchNextArticlePage());
@@ -65,9 +55,17 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      <Page className={classNames(styles.wrapper)} onScrollEnd={onLoadNextPart}>
-        <ArticleViewSelector view={view} onViewClick={onViewClick} />
-        <ArticleList view={view} articles={articles} isLoading={isLoading} />
+      <Page
+        className={classNames(styles.articlesPage)}
+        onScrollEnd={onLoadNextPart}
+      >
+        <ArticlePageFilter />
+        <ArticleList
+          view={view}
+          articles={articles}
+          isLoading={isLoading}
+          className={styles.list}
+        />
       </Page>
     </DynamicModuleLoader>
   );

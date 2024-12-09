@@ -6,13 +6,14 @@ import {
 } from "entities/Article";
 import styles from "./ArticlePageFilter.module.scss";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { articlesPageActions } from "pages/ArticlesPage/model/slices/articlesPageSlice";
+import { articlesPageActions } from "../../model/slices/articlesPageSlice";
 import { useSelector } from "react-redux";
 import {
   getArticlesPageOrder,
+  getArticlesPageSearch,
   getArticlesPageSort,
   getArticlesPageView,
-} from "pages/ArticlesPage/model/selectors/articlesPageSelectors";
+} from "../../model/selectors/articlesPageSelectors";
 import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
 import { SortOrder } from "shared/types";
@@ -22,6 +23,7 @@ export const ArticlePageFilter = () => {
   const view = useSelector(getArticlesPageView);
   const order = useSelector(getArticlesPageOrder);
   const sort = useSelector(getArticlesPageSort);
+  const search = useSelector(getArticlesPageSearch);
 
   const onChangeOrder = (newOrder: SortOrder) => {
     dispatch(articlesPageActions.setOrder(newOrder));
@@ -29,6 +31,10 @@ export const ArticlePageFilter = () => {
 
   const onChangeSort = (newSort: ArticleSortField) => {
     dispatch(articlesPageActions.setSort(newSort));
+  };
+
+  const onChangeSearch = (newSearch: string) => {
+    dispatch(articlesPageActions.setSearch(newSearch));
   };
 
   const onViewClick = (view: ArticleView) => {
@@ -46,7 +52,7 @@ export const ArticlePageFilter = () => {
         <ArticleViewSelector view={view} onViewClick={onViewClick} />
       </div>
       <Card className={styles.search}>
-        <Input placeholder="Поиск" />
+        <Input placeholder="Поиск" value={search} onChange={onChangeSearch} />
       </Card>
     </>
   );

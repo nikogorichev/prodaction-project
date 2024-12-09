@@ -1,3 +1,4 @@
+import styles from "./ArticleSortSelector.module.scss"
 import { ArticleSortField } from "entities/Article/model/types/article";
 import { SortOrder } from "shared/types";
 import { Select, SelectOption } from "shared/ui/Select/Select";
@@ -39,7 +40,7 @@ export const ArticleSortSelector = (props: Props) => {
   const { sort, order, onChangeOrder, onChangeSort } = props;
 
   return (
-    <div>
+    <div className={styles.articleSortSelectorWrapper}>
       <Select
         label="Сортировать по"
         options={sortOptions}

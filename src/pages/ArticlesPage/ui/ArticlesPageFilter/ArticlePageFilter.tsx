@@ -17,6 +17,7 @@ import {
 import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
 import { SortOrder } from "shared/types";
+import { fetchArticleList } from "pages/ArticlesPage/model/services/fetchArticlesList";
 
 export const ArticlePageFilter = () => {
   const dispatch = useAppDispatch();
@@ -25,19 +26,29 @@ export const ArticlePageFilter = () => {
   const sort = useSelector(getArticlesPageSort);
   const search = useSelector(getArticlesPageSearch);
 
+  const fetchData = () => {
+    dispatch(fetchArticleList({ replace: true }));
+  };
+
   const onChangeOrder = (newOrder: SortOrder) => {
     dispatch(articlesPageActions.setOrder(newOrder));
+    dispatch(articlesPageActions.setPage(1));
+    fetchData();
   };
 
   const onChangeSort = (newSort: ArticleSortField) => {
     dispatch(articlesPageActions.setSort(newSort));
+    dispatch(articlesPageActions.setPage(1));
+    fetchData();
   };
 
   const onChangeSearch = (newSearch: string) => {
     dispatch(articlesPageActions.setSearch(newSearch));
+    dispatch(articlesPageActions.setPage(1));
+    fetchData();
   };
 
-  const onViewClick = (view: ArticleView) => {
+  const onChangeView = (view: ArticleView) => {
     dispatch(articlesPageActions.setView(view));
   };
   return (
@@ -49,7 +60,7 @@ export const ArticlePageFilter = () => {
           sort={sort}
           order={order}
         />
-        <ArticleViewSelector view={view} onViewClick={onViewClick} />
+        <ArticleViewSelector view={view} onViewClick={onChangeView} />
       </div>
       <Card className={styles.search}>
         <Input placeholder="Поиск" value={search} onChange={onChangeSearch} />

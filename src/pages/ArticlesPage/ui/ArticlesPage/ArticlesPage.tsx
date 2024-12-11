@@ -22,6 +22,7 @@ import { fetchNextArticlePage } from "../../model/services/fetchNextArticlePage"
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { initArticlesPage } from "../../model/services/initArticlesPage";
 import { ArticlePageFilter } from "../ArticlesPageFilter/ArticlePageFilter";
+import { useSearchParams } from "react-router-dom";
 
 const reducers: ReducersList = {
   articlePage: articlesPageReducer,
@@ -33,9 +34,10 @@ const ArticlesPage = () => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
+  const [searchParams] = useSearchParams();
 
   useInitialEffect(() => {
-    dispatch(initArticlesPage());
+    dispatch(initArticlesPage(searchParams));
   });
 
   const onLoadNextPart = () => {

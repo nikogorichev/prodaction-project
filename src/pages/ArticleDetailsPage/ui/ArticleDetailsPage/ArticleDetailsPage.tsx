@@ -7,10 +7,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
-import {
-  articleDetailsCommentsReducer,
-  getArticleComments,
-} from "../../model/slice/articleDetailsCommentsSlice";
+import { getArticleComments } from "../../model/slice/articleDetailsCommentsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getArticleCommentsError,
@@ -23,19 +20,16 @@ import { addCommentForArticle } from "../../model/services/addCommentForArticle/
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Page } from "widgets/Page/Page";
-import {
-  articleDetailsPageRecommendationReducer,
-  getArticleRecommendation,
-} from "../../model/slice/articleDetailsPageRecommendationSlice";
+import { getArticleRecommendation } from "../../model/slice/articleDetailsPageRecommendationSlice";
 import {
   getArticleRecommendationsError,
   getArticleRecommendationsIsLoading,
-} from "pages/ArticleDetailsPage/model/selectors/recommendations";
-import { fetchArticleRecommendation } from "pages/ArticleDetailsPage/model/services/fetchArticleRecommendation/fetchArticleRecommendation";
+} from "../../model/selectors/recommendations";
+import { fetchArticleRecommendation } from "../../model/services/fetchArticleRecommendation/fetchArticleRecommendation";
+import { articleDetailsPageReducer } from "../../model/slice";
 
 const reducersList: ReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer,
-  articleDetailsRecommendations: articleDetailsPageRecommendationReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = () => {
@@ -84,6 +78,7 @@ const ArticleDetailsPage = () => {
           articles={recommendations}
           isLoading={recommendationsIsLoading}
           className={styles.recommendations}
+          target="_blank"
         />
         <Text
           title="Комментарии"

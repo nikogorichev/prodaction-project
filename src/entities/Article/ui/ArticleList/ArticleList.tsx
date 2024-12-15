@@ -4,12 +4,14 @@ import styles from "./ArticleList.module.scss";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
 import { Text, TextSize } from "shared/ui/Text/Text";
+import { HTMLAttributeAnchorTarget } from "react";
 
 type Props = {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 };
 
 const getSkeletons = (view: ArticleView) => {
@@ -19,10 +21,21 @@ const getSkeletons = (view: ArticleView) => {
 };
 
 export const ArticleList = (props: Props) => {
-  const { className, articles, isLoading, view = ArticleView.GRID } = props;
+  const {
+    className,
+    articles,
+    isLoading,
+    view = ArticleView.GRID,
+    target,
+  } = props;
 
   const renderArticle = (article: Article) => (
-    <ArticleListItem article={article} view={view} key={article.id} />
+    <ArticleListItem
+      article={article}
+      view={view}
+      key={article.id}
+      target={target}
+    />
   );
 
   if (!isLoading && !articles.length) {

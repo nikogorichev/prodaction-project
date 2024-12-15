@@ -14,18 +14,22 @@ const recommendationsAdapter = createEntityAdapter<Article>({
   selectId: (article) => article.id,
 });
 
-export const getArticleRecommendation = recommendationsAdapter.getSelectors<StateSchema>(
-  (state) => state.articleDetailsRecommendations || recommendationsAdapter.getInitialState()
-);
+export const getArticleRecommendation =
+  recommendationsAdapter.getSelectors<StateSchema>(
+    (state) =>
+      state.articleDetailsPage?.recommendations ||
+      recommendationsAdapter.getInitialState()
+  );
 
 const articleDetailsPageRecommendationSlice = createSlice({
   name: "articleDetailsPageRecommendationSlice",
-  initialState: recommendationsAdapter.getInitialState<ArticleDetailsRecommendationSchema>({
-    isLoading: false,
-    error: undefined,
-    ids: [],
-    entities: {},
-  }),
+  initialState:
+    recommendationsAdapter.getInitialState<ArticleDetailsRecommendationSchema>({
+      isLoading: false,
+      error: undefined,
+      ids: [],
+      entities: {},
+    }),
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -33,13 +37,10 @@ const articleDetailsPageRecommendationSlice = createSlice({
         state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(
-        fetchArticleRecommendation.fulfilled,
-        (state, action) => {
-          state.isLoading = false;
-          recommendationsAdapter.setAll(state, action.payload);
-        }
-      )
+      .addCase(fetchArticleRecommendation.fulfilled, (state, action) => {
+        state.isLoading = false;
+        recommendationsAdapter.setAll(state, action.payload);
+      })
       .addCase(fetchArticleRecommendation.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;

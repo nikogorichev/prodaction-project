@@ -15,20 +15,19 @@ import { useNavigate } from "react-router-dom";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import { Avatar } from "shared/ui/Avatar/Avatar";
+import { AppLink } from "shared/ui/AppLink/AppLink";
+import { HTMLAttributeAnchorTarget } from "react";
 
 type Props = {
   className?: string;
   article: Article;
   view: ArticleView;
+  target?: HTMLAttributeAnchorTarget
 };
 
 export const ArticleListItem = (props: Props) => {
-  const { className, article, view } = props;
+  const { className, article, view, target } = props;
   const navigate = useNavigate();
-
-  const onOpenArticle = () => {
-    navigate(RoutePath.article_details + article.id);
-  };
 
   const types = (
     <Text text={article.type.join(", ")} className={styles.types} />
@@ -64,9 +63,12 @@ export const ArticleListItem = (props: Props) => {
             />
           )}
           <div className={styles.footer}>
-            <Button onClick={onOpenArticle} theme={ThemeButton.OUTLINE}>
-              Читать далее...
-            </Button>
+            <AppLink
+              to={RoutePath.article_details + article.id}
+              target={target}
+            >
+              <Button theme={ThemeButton.OUTLINE}>Читать далее...</Button>
+            </AppLink>
             {views}
           </div>
         </Card>
@@ -75,8 +77,12 @@ export const ArticleListItem = (props: Props) => {
   }
 
   return (
-    <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>
-      <Card onClick={onOpenArticle}>
+    <AppLink
+      className={classNames(styles.wrapper, {}, [className, styles[view]])}
+      to={RoutePath.article_details + article.id}
+      target={target}
+    >
+      <Card>
         <div className={styles.imageWrapper}>
           <img src={article.img} className={styles.img} alt={article.title} />
           <Text text={article.createdAt} className={styles.date} />
@@ -87,6 +93,6 @@ export const ArticleListItem = (props: Props) => {
         </div>
         <Text text={article.title} className={styles.title} />
       </Card>
-    </div>
+    </AppLink>
   );
 };

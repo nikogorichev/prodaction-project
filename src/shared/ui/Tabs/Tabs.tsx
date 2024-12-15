@@ -1,27 +1,38 @@
 import { ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import styles from "./Tabs.module.scss";
-import { Card } from "../Card/Card";
+import { Card, CardTheme } from "../Card/Card";
 
-type TabItem = {
-  value: string;
+export type TabItem<T> = {
+  value: T;
   content: ReactNode;
 };
 
-type Props = {
+type Props<T> = {
   className?: string;
-  tabs: TabItem[];
-  value: string;
-  onTabClick: (tab: TabItem) => void;
+  tabs: TabItem<T>[];
+  value: T;
+  onTabClick: (tab: TabItem<T>) => void;
 };
 
-export const Tabs = (props: Props) => {
+export const Tabs = <T extends string>(props: Props<T>) => {
   const { className, tabs, onTabClick, value } = props;
+
+  const onChangeTab = (tab: TabItem<T>) => () => {
+    if (value !== tab.value) {
+      onTabClick(tab);
+    }
+  };
 
   return (
     <div className={classNames(styles.wrapper, {}, [className])}>
       {tabs.map((tab) => (
-        <Card className={styles.tab} key={tab.value}>
+        <Card
+          className={styles.tab}
+          key={tab.value}
+          theme={value === tab.value ? CardTheme.NORMAL : CardTheme.OUTLINED}
+          onClick={onChangeTab(tab)}
+        >
           {tab.content}
         </Card>
       ))}

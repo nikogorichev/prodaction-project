@@ -7,6 +7,7 @@ export enum ArticleSortField {
 }
 
 export enum ArticleType {
+  ALL = "ALL",
   IT = "IT",
   SCIENCE = "SCIENCE",
   ECONOMICS = "ECONOMICS",

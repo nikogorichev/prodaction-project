@@ -12,13 +12,17 @@ import {
   getArticlesPageOrder,
   getArticlesPageSearch,
   getArticlesPageSort,
+  getArticlesPageType,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
 import { SortOrder } from "shared/types";
-import { fetchArticleList } from "pages/ArticlesPage/model/services/fetchArticlesList";
+import { fetchArticleList } from "../../model/services/fetchArticlesList";
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
+import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
+import { ArticleType } from "entities/Article";
+import { ArticleTypeTabs } from "entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs";
 
 export const ArticlePageFilter = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +30,7 @@ export const ArticlePageFilter = () => {
   const order = useSelector(getArticlesPageOrder);
   const sort = useSelector(getArticlesPageSort);
   const search = useSelector(getArticlesPageSearch);
+  const type = useSelector(getArticlesPageType);
 
   const fetchData = () => {
     dispatch(fetchArticleList({ replace: true }));
@@ -51,6 +56,12 @@ export const ArticlePageFilter = () => {
     debouncedFetchData();
   };
 
+  const onChangeType = (newType: TabItem<ArticleType>) => {
+    dispatch(articlesPageActions.setType(newType.value));
+    dispatch(articlesPageActions.setPage(1));
+    fetchData();
+  };
+
   const onChangeView = (view: ArticleView) => {
     dispatch(articlesPageActions.setView(view));
   };
@@ -68,6 +79,7 @@ export const ArticlePageFilter = () => {
       <Card className={styles.search}>
         <Input placeholder="Поиск" value={search} onChange={onChangeSearch} />
       </Card>
+      <ArticleTypeTabs value={type} onChangeType={onChangeType} />
     </>
   );
 };

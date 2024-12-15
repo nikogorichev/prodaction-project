@@ -22,7 +22,7 @@ import { fetchArticleList } from "../../model/services/fetchArticlesList";
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
 import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
 import { ArticleType } from "entities/Article";
-import { ArticleTypeTabs } from "entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs";
+import { ArticleTypeTabs } from "entities/Article";
 
 export const ArticlePageFilter = () => {
   const dispatch = useAppDispatch();
@@ -79,7 +79,11 @@ export const ArticlePageFilter = () => {
       <Card className={styles.search}>
         <Input placeholder="Поиск" value={search} onChange={onChangeSearch} />
       </Card>
-      <ArticleTypeTabs value={type} onChangeType={onChangeType} />
+      <ArticleTypeTabs
+        value={type}
+        onChangeType={onChangeType}
+        className={styles.tabs}
+      />
     </>
   );
 };

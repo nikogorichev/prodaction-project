@@ -3,6 +3,7 @@ import { Article, ArticleView } from "../../model/types/article";
 import styles from "./ArticleList.module.scss";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
+import { Text, TextSize } from "shared/ui/Text/Text";
 
 type Props = {
   className?: string;
@@ -23,6 +24,10 @@ export const ArticleList = (props: Props) => {
   const renderArticle = (article: Article) => (
     <ArticleListItem article={article} view={view} key={article.id} />
   );
+
+  if (!isLoading && !articles.length) {
+    return <Text title="Статей не найдено" size={TextSize.L} />;
+  }
 
   return (
     <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>

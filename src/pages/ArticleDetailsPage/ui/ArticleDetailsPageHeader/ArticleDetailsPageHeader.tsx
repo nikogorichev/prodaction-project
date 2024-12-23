@@ -3,15 +3,20 @@ import styles from "./ArticleDetailsPageHeader.module.scss";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
-import { getUserAuthData } from "entities/User";
 import { getCanEditArticle } from "../../model/selectors/article";
+import { getArticleDetailsData } from "entities/Article";
 
 export const ArticleDetailsPageHeader = () => {
   const navigate = useNavigate();
   const canEditArticle = useSelector(getCanEditArticle);
+  const article = useSelector(getArticleDetailsData)
 
   const onBackToList = () => {
     navigate(RoutePath.articles);
+  };
+
+  const onEditPage = () => {
+    navigate(`${RoutePath.article_details}${article?.id}/edit`);
   };
 
   return (
@@ -20,7 +25,9 @@ export const ArticleDetailsPageHeader = () => {
         Назад к списку
       </Button>
       {canEditArticle && (
-        <Button theme={ThemeButton.OUTLINE}>Редактировать</Button>
+        <Button theme={ThemeButton.OUTLINE} onClick={onEditPage}>
+          Редактировать
+        </Button>
       )}
     </div>
   );

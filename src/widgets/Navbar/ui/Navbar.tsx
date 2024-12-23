@@ -31,7 +31,11 @@ export const Navbar = ({ className }: NavbarProps) => {
   if (authData) {
     return (
       <header className={classNames(styles.navbar, {}, [className])}>
-        <Text className={styles.appName} title="Test app"/>
+        <Text
+          className={styles.appName}
+          title="Test app"
+          theme={TextTheme.INVERTED}
+        />
         <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
           Создать статью
         </AppLink>

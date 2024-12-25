@@ -5,6 +5,7 @@ import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
 import { Text, TextSize } from "shared/ui/Text/Text";
 import { HTMLAttributeAnchorTarget } from "react";
+import { AutoSizer, List, WindowScroller } from "react-virtualized";
 
 type Props = {
   className?: string;
@@ -43,9 +44,22 @@ export const ArticleList = (props: Props) => {
   }
 
   return (
-    <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>
-      {articles.length > 0 ? articles.map(renderArticle) : null}
-      {isLoading && getSkeletons(view)}
-    </div>
+    // <WindowScroller>
+    <AutoSizer>
+      {({ height, width }) => (
+        <List
+          height={500}
+          rowCount={articles.length}
+          rowHeight={500}
+          rowRenderer={() => <div>row</div>}
+          width={width}
+        />
+      )}
+    </AutoSizer>
+    // </WindowScroller>
+    // <div className={classNames(styles.wrapper, {}, [className, styles[view]])}>
+    //   {articles.length > 0 ? articles.map(renderArticle) : null}
+    //   {isLoading && getSkeletons(view)}
+    // </div>
   );
 };

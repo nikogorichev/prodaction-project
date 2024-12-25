@@ -16,6 +16,8 @@ type Props = {
   onScrollEnd?: () => void;
 };
 
+export const PAGE_ID = "PAGE_ID"
+
 export const Page = (props: Props) => {
   const { children, className, onScrollEnd } = props;
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -50,6 +52,7 @@ export const Page = (props: Props) => {
       ref={wrapperRef}
       className={classNames(styles.wrapper, {}, [className])}
       onScroll={onScroll}
+      id={PAGE_ID}
     >
       {children}
       {onScrollEnd && <div ref={triggerRef} className={styles.trigger} />}

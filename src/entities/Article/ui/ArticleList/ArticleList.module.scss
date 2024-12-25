@@ -7,3 +7,15 @@
 .LIST {
   flex-direction: column;
 }
+
+.GRID {
+  .card {
+    display: inline-flex;
+    height: 300px;
+}
+
+.row {
+    display: flex;
+    gap: 30px;
+}
+}

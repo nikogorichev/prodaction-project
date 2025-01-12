@@ -39,7 +39,7 @@ export type FlexProps = {
   align?: FlexAlign;
   direction?: FlexDirection;
   gap?: FlexGap;
-  component?: keyof ElementType;
+  component?: keyof JSX.IntrinsicElements | ElementType;
   max?: boolean;
 };
 

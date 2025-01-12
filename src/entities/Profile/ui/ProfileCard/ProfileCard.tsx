@@ -5,9 +5,9 @@ import { Profile } from "entities/Profile/model/types/profile";
 import Loader from "shared/ui/Loader/Loader";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Select } from "shared/ui/Select/Select";
 import { Currency, CurrencySelect } from "entities/Currency";
 import { Country } from "shared/const/common";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface ProfileCardProps {
   data?: Profile;
@@ -39,22 +39,30 @@ export const ProfileCard = ({
 }: ProfileCardProps) => {
   if (isLoading) {
     return (
-      <div className={classNames(styles.profileCard, {}, [styles.loading])}>
+      <HStack
+        className={classNames(styles.profileCard, {}, [styles.loading])}
+        max
+        justify="center"
+      >
         <Loader />
-      </div>
+      </HStack>
     );
   }
 
   if (error) {
     return (
-      <div className={classNames(styles.profileCard, {}, [styles.error])}>
+      <HStack
+        className={classNames(styles.profileCard, {}, [styles.error])}
+        max
+        justify="center"
+      >
         <Text
           theme={TextTheme.ERROR}
           title="Ошибка при загрузке профиля"
           text="Обновите страницу"
           align={TextAlign.CENTER}
         />
-      </div>
+      </HStack>
     );
   }
 
@@ -63,62 +71,55 @@ export const ProfileCard = ({
   };
 
   return (
-    <div className={classNames(styles.profileCard, mods)}>
+    <VStack className={classNames(styles.profileCard, mods)} gap="16" max>
       {data?.avatar ? (
-        <div className={styles.avatarWrapper}>
+        <HStack justify="center" max>
           <Avatar src={data?.avatar} />
-        </div>
+        </HStack>
       ) : (
         ""
       )}
       <Input
         value={data?.first}
         placeholder="Ваше имя"
-        className={styles.input}
         onChange={onChangeFirstname}
         readonly={readonly}
       />
       <Input
         value={data?.lastname}
         placeholder="Ваша фамилия"
-        className={styles.input}
         onChange={onChangeLastname}
         readonly={readonly}
       />
       <Input
         value={data?.age}
         placeholder="Ваш возраст"
-        className={styles.input}
         onChange={onChangeAge}
         readonly={readonly}
       />
       <Input
         value={data?.city}
         placeholder="Город"
-        className={styles.input}
         onChange={onChangeCity}
         readonly={readonly}
       />
       <Input
         value={data?.username}
         placeholder="Имя пользователя"
-        className={styles.input}
         onChange={onChangeUsername}
         readonly={readonly}
       />
       <Input
         value={data?.avatar}
         placeholder="Введите ссылку на аватар"
-        className={styles.input}
         onChange={onChangeAvatar}
         readonly={readonly}
       />
       <CurrencySelect
-        className={styles.input}
         value={data?.currency}
         onChange={onChangeCurrency}
         readonly={readonly}
       />
-    </div>
+    </VStack>
   );
 };

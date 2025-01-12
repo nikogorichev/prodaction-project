@@ -1,6 +1,5 @@
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { Text } from "shared/ui/Text/Text";
-import styles from "./ProfilePageHeader.module.scss";
 import { useSelector } from "react-redux";
 import {
   getProfileData,
@@ -10,6 +9,7 @@ import {
 } from "entities/Profile";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { getUserAuthData } from "entities/User";
+import { HStack } from "shared/ui/Stack";
 
 const ProfilePageHeader = () => {
   const readonly = useSelector(getProfileReadonly);
@@ -29,39 +29,27 @@ const ProfilePageHeader = () => {
     dispatch(updateProfileData());
   };
   return (
-    <div className={styles.header}>
+    <HStack justify="between" max>
       <Text title="Профиль" />
       {canEdit && (
-        <div className={styles.btnWrapper}>
+        <HStack gap="8">
           {readonly ? (
-            <Button
-              theme={ThemeButton.OUTLINE}
-              className={styles.editBtn}
-              onClick={onEdit}
-            >
+            <Button theme={ThemeButton.OUTLINE} onClick={onEdit}>
               Редактировать
             </Button>
           ) : (
             <>
-              <Button
-                theme={ThemeButton.OUTLINE_RED}
-                className={styles.editBtn}
-                onClick={onCancelEdit}
-              >
+              <Button theme={ThemeButton.OUTLINE_RED} onClick={onCancelEdit}>
                 Отменить
               </Button>
-              <Button
-                theme={ThemeButton.OUTLINE}
-                className={styles.saveBtn}
-                onClick={onSave}
-              >
+              <Button theme={ThemeButton.OUTLINE} onClick={onSave}>
                 Сохранить
               </Button>
             </>
           )}
-        </div>
+        </HStack>
       )}
-    </div>
+    </HStack>
   );
 };
 

@@ -1,6 +1,7 @@
 import { Select } from "shared/ui/Select/Select";
 import styles from "./CurrencySelect.module.scss";
 import { Currency } from "../../model/types/currency";
+import { ListBox } from "shared/ui/ListBox/ListBox";
 
 const options = [
   { value: Currency.RUB, content: Currency.RUB },
@@ -24,14 +25,28 @@ export const CurrencySelect = ({
   const handleOnChange = (value: string) => {
     onChange?.(value as Currency);
   };
+
   return (
-    <Select
-      label="Укажите валюту"
-      options={options}
-      value={value}
+    <ListBox
       onChange={handleOnChange}
-      readonly={readonly}
+      items={options}
       className={className}
+      value={value}
+      defaultValue="Укажите валюту"
+      label="Укажите валюту"
+      readonly={readonly}
+      direction="top"
     />
   );
+
+  // return (
+  //   <Select
+  //     label="Укажите валюту"
+  //     options={options}
+  //     value={value}
+  //     onChange={handleOnChange}
+  //     readonly={readonly}
+  //     className={className}
+  //   />
+  // );
 };

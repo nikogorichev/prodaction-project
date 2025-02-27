@@ -35,7 +35,7 @@ export const CurrencySelect = ({
       defaultValue="Укажите валюту"
       label="Укажите валюту"
       readonly={readonly}
-      direction="top"
+      direction="top-right"
     />
   );
 

@@ -8,6 +8,8 @@ import { getUserAuthData, userActions } from "entities/User";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { Menu } from "shared/ui/Menu/Menu";
+import { Avatar } from "shared/ui/Avatar/Avatar";
 
 type NavbarProps = { className?: string };
 
@@ -39,13 +41,18 @@ export const Navbar = ({ className }: NavbarProps) => {
         <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
           Создать статью
         </AppLink>
-        <Button
-          className={styles.links}
-          theme={ThemeButton.CLEAR_INVERTED}
-          onClick={onLogout}
-        >
-          Выйти
-        </Button>
+        <Menu
+          className={styles.menu}
+          trigger={<Avatar size={30} src={authData.avatar} />}
+          items={[
+            {
+              content: "Профиль",
+              href: RoutePath.profile + authData.id,
+              onClick: () => console.log("qqqq 123"),
+            },
+            { content: "Выйти", onClick: onLogout },
+          ]}
+        />
       </header>
     );
   }

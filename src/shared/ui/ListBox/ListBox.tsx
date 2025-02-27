@@ -4,6 +4,7 @@ import { Listbox as HListBox } from "@headlessui/react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "../Button/Button";
 import { HStack } from "../Stack";
+import { DropdownDirection } from "shared/types/ui";
 
 export type ListBoxItem = {
   value: string;
@@ -11,13 +12,11 @@ export type ListBoxItem = {
   disabled?: boolean;
 };
 
-type DropdownDirection = "top" | "bottom" | "left" | "right";
-
 const dropdownDirectionClasses: Record<DropdownDirection, string> = {
-  top: cls.optionsTop,
-  bottom: cls.optionsBottom,
-  left: cls.optionsLeft,
-  right: cls.optionsRight,
+  "top-left": cls.optionsTopLeft,
+  "top-right": cls.optionsTopRight,
+  "bottom-left": cls.optionsBottomLeft,
+  "bottom-right": cls.optionsBottomRight,
 };
 
 type ListBoxProps = {
@@ -40,7 +39,7 @@ export const ListBox = (props: ListBoxProps) => {
     onChange,
     readonly,
     label,
-    direction = "bottom",
+    direction = "bottom-left",
   } = props;
 
   const optionsClasses = [dropdownDirectionClasses[direction]];

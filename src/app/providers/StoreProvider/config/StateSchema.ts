@@ -20,17 +20,19 @@ import {
 import { AddCommentFormSchema } from "features/addCommentForm";
 import { ArticlePageSchema } from "pages/ArticlesPage";
 import { ScrollSaveSchema } from "features/ScrollSave";
+import { rtkApi } from "shared/api/rtkApi";
 
 export interface StateSchema {
   counter: CounterSchema;
   scrollSave: ScrollSaveSchema;
   user: UserSchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
   addCommentFormSchema?: AddCommentFormSchema;
   articlePage?: ArticlePageSchema;
-  articleDetailsPage?: ArticleDetailsPageSchema
+  articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -1,8 +1,9 @@
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { Country } from "shared/const/common";
-import { Profile, ValidateProfileError } from "../../types/profile";
 import { Currency } from "entities/Currency";
 import { updateProfileData } from "./updateProfileData";
+import { Profile } from "entities/Profile";
+import { ValidateProfileError } from "../../types/editableProfileCard";
 
 jest.mock("axios");
 

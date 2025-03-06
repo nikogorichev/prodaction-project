@@ -26,6 +26,7 @@ interface TextProps {
   theme?: TextTheme;
   align?: TextAlign;
   size?: TextSize;
+  "data-testid"?: string;
 }
 
 type HeaderTagType = "h1" | "h2" | "h3";
@@ -43,6 +44,7 @@ export const Text = ({
   theme = TextTheme.PRIMARY,
   align = TextAlign.LEFT,
   size = TextSize.M,
+  "data-testid": dataTestId = "Text",
 }: TextProps) => {
   const additionalStyles = [
     className,
@@ -55,8 +57,19 @@ export const Text = ({
 
   return (
     <div className={classNames(styles.wrapper, {}, additionalStyles)}>
-      {title && <HeaderTag className={styles.title}>{title}</HeaderTag>}
-      {text && <p className={styles.text}>{text}</p>}
+      {title && (
+        <HeaderTag
+          className={styles.title}
+          data-testid={`${dataTestId}.Header`}
+        >
+          {title}
+        </HeaderTag>
+      )}
+      {text && (
+        <p className={styles.text} data-testid={`${dataTestId}.Paragraph`}>
+          {text}
+        </p>
+      )}
     </div>
   );
 };

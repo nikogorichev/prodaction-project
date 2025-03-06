@@ -12,7 +12,10 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { Text, TextTheme } from "shared/ui/Text/Text";
-import { DynamicModuleLoader, ReducersList } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
 const initialReducers: ReducersList = {
@@ -20,11 +23,11 @@ const initialReducers: ReducersList = {
 };
 
 type Props = {
-  id: string
-}
+  id: string;
+};
 
 export const EditableProfileCard = (props: Props) => {
-  const { id } = props
+  const { id } = props;
   const dispatch = useAppDispatch();
   const form = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileLoading);
@@ -88,10 +91,15 @@ export const EditableProfileCard = (props: Props) => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <EditableProfileCardHeader/>
+      <EditableProfileCardHeader />
       {validateErrors?.length &&
         validateErrors.map((arr) => (
-          <Text key={arr} theme={TextTheme.ERROR} text={arr} />
+          <Text
+            key={arr}
+            theme={TextTheme.ERROR}
+            text={arr}
+            data-testid="EditableProfileCard.Error"
+          />
         ))}
       <ProfileCard
         data={form}

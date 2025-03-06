@@ -13,7 +13,11 @@ export const ArticleRecommendationsList = () => {
   return (
     <VStack gap="8">
       <Text title="Рекоммендуем" size={TextSize.L} />
-      <ArticleList articles={articles ?? []} target="_blank" />
+      <ArticleList
+        articles={articles ?? []}
+        target="_blank"
+        isVirtualized={false}
+      />
     </VStack>
   );
 };

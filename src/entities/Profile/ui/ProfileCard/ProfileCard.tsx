@@ -84,41 +84,49 @@ export const ProfileCard = ({
         placeholder="Ваше имя"
         onChange={onChangeFirstname}
         readonly={readonly}
+        data-testid="ProfileCard.FirstName"
       />
       <Input
         value={data?.lastname}
         placeholder="Ваша фамилия"
         onChange={onChangeLastname}
         readonly={readonly}
+        data-testid="ProfileCard.LastName"
       />
       <Input
         value={data?.age}
         placeholder="Ваш возраст"
         onChange={onChangeAge}
         readonly={readonly}
+        data-testid="ProfileCard.Age"
+
       />
       <Input
         value={data?.city}
         placeholder="Город"
         onChange={onChangeCity}
         readonly={readonly}
+        data-testid="ProfileCard.City"
       />
       <Input
         value={data?.username}
         placeholder="Имя пользователя"
         onChange={onChangeUsername}
         readonly={readonly}
+        data-testid="ProfileCard.Nickname"
       />
       <Input
         value={data?.avatar}
         placeholder="Введите ссылку на аватар"
         onChange={onChangeAvatar}
         readonly={readonly}
+        data-testid="ProfileCard.Avatar"
       />
       <CurrencySelect
         value={data?.currency}
         onChange={onChangeCurrency}
         readonly={readonly}
+        data-testid="ProfileCard.Currency"
       />
     </VStack>
   );

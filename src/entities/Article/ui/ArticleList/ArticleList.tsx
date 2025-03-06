@@ -19,6 +19,7 @@ type Props = {
   isLoading?: boolean;
   view?: ArticleView;
   target?: HTMLAttributeAnchorTarget;
+  isVirtualized?: boolean;
 };
 
 const getSkeletons = (view: ArticleView) => {
@@ -34,6 +35,7 @@ export const ArticleList = (props: Props) => {
     isLoading,
     view = ArticleView.GRID,
     target,
+    isVirtualized = true,
   } = props;
 
   const isList = view === ArticleView.LIST;
@@ -87,17 +89,30 @@ export const ArticleList = (props: Props) => {
           className={classNames(styles.wrapper, {}, [className, styles[view]])}
           ref={registerChild}
         >
-          <List
-            height={height ?? 700}
-            rowCount={rowCount}
-            rowHeight={isList ? 700 : 330}
-            rowRenderer={rowRender}
-            width={width ? width - 80 : 700}
-            autoHeight
-            onScroll={onChildScroll}
-            isScrolling={isScrolling}
-            scrollTop={scrollTop}
-          />
+          {isVirtualized ? (
+            <List
+              height={height ?? 700}
+              rowCount={rowCount}
+              rowHeight={isList ? 700 : 330}
+              rowRenderer={rowRender}
+              width={width ? width - 80 : 700}
+              autoHeight
+              onScroll={onChildScroll}
+              isScrolling={isScrolling}
+              scrollTop={scrollTop}
+            />
+          ) : (
+            articles.map((item) => (
+              <ArticleListItem
+                article={item}
+                view={view}
+                target={target}
+                key={item.id}
+                className={styles.card}
+              />
+            ))
+          )}
+
           {isLoading && getSkeletons(view)}
         </div>
       )}

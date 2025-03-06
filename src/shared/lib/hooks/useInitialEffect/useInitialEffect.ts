@@ -2,7 +2,7 @@ import { DependencyList, useEffect } from "react";
 
 export function useInitialEffect(callback: () => void, deps: DependencyList = []) {
   useEffect(() => {
-    if (__PROJECT__ !== "storybook" && __PROJECT__ !== "jest") {
+    if (__PROJECT__ !== "storybook") {
       callback();
     }
   }, deps);

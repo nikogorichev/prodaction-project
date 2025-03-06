@@ -36,9 +36,15 @@ const options = {
 };
 
 describe("features/EditableProfileCard", () => {
-  test("Режим онли должен переключиться", async () => {
+  beforeEach(() => {
+    jest.spyOn($api, "get").mockReturnValue(
+      Promise.resolve({
+        data: profile,
+      })
+    );
     componentRender(<EditableProfileCard id="1" />, options);
-
+  });
+  test("Режим онли должен переключиться", async () => {
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );
@@ -48,8 +54,6 @@ describe("features/EditableProfileCard", () => {
   });
 
   test("При отмене значения должны обнуляться", async () => {
-    componentRender(<EditableProfileCard id="1" />, options);
-
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );
@@ -75,8 +79,6 @@ describe("features/EditableProfileCard", () => {
   });
 
   test("Должна появляться ошибка", async () => {
-    componentRender(<EditableProfileCard id="1" />, options);
-
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );
@@ -88,12 +90,13 @@ describe("features/EditableProfileCard", () => {
       screen.getByTestId("EditableProfileCardHeader.SaveButton")
     );
 
-    expect(screen.getByTestId("EditableProfileCard.Error.Paragraph")).toBeInTheDocument();
+    expect(
+      screen.getByTestId("EditableProfileCard.Error.Paragraph")
+    ).toBeInTheDocument();
   });
 
   test("Если ошибок нет, то должен сработать запрос на сервер", async () => {
-    const mockPutRequest = jest.spyOn($api, "put")
-    componentRender(<EditableProfileCard id="1" />, options);
+    const mockPutRequest = jest.spyOn($api, "put");
 
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")

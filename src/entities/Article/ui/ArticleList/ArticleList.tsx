@@ -87,6 +87,7 @@ export const ArticleList = (props: Props) => {
       }) => (
         <div
           className={classNames(styles.wrapper, {}, [className, styles[view]])}
+          //@ts-ignore
           ref={registerChild}
         >
           {isVirtualized ? (

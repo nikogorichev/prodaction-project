@@ -1,13 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 interface PortalProps {
   element?: HTMLElement;
+  children: ReactNode;
 }
 
-export const Portal: React.FC<PortalProps> = ({
-  children,
-  element = document.body,
-}) => {
+export const Portal = ({ children, element = document.body }: PortalProps) => {
   return createPortal(children, element);
 };

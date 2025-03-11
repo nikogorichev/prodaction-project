@@ -7,6 +7,8 @@ import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { Suspense } from "react";
+import Loader from "shared/ui/Loader/Loader";
 
 type Props = {
   id: string;
@@ -29,7 +31,9 @@ export const ArticleDetailsComment = (props: Props) => {
   return (
     <>
       <Text title="Комментарии" size={TextSize.L} />
-      <AddCommentForm onSendComment={onSendComment} />
+      <Suspense fallback={<Loader />}>
+        <AddCommentForm onSendComment={onSendComment} />
+      </Suspense>
       <CommentList comments={comments} isLoading={commentsIsLoading} />
     </>
   );

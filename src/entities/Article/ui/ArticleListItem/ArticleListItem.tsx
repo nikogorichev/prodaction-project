@@ -1,10 +1,9 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import {
   Article,
-  ArticleBlockType,
   ArticleTextBlock,
-  ArticleView,
 } from "../../model/types/article";
+import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import styles from "./ArticleListItem.module.scss";
 import { Text } from "shared/ui/Text/Text";
 import { Icon } from "shared/ui/Icon/Icon";

@@ -3,8 +3,8 @@ import { Currency } from "entities/Currency";
 import { Country } from "shared/const/common";
 import { profileActions, profileReducer } from "./profileSlice";
 import { Profile } from "entities/Profile";
-import { ValidateProfileError } from "../types/editableProfileCard";
 import { ProfileSchema } from "../types/editableProfileCard";
+import { ValidateProfileError } from "../consts/consts";
 
 const data: Profile = {
     username: "admin",

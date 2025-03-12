@@ -10,9 +10,9 @@ import {
 export {
   StoreProvider,
   createReduxStore,
-  StateSchema,
-  ReduxStoreManager,
-  AppDispatch,
-  ThunkExtraArg,
-  ThunkExtraConfig,
+  type StateSchema,
+  type ReduxStoreManager,
+  type AppDispatch,
+  type ThunkExtraArg,
+  type ThunkExtraConfig,
 };

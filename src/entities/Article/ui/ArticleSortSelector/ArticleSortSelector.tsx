@@ -1,5 +1,5 @@
 import styles from "./ArticleSortSelector.module.scss"
-import { ArticleSortField } from "entities/Article";
+import { ArticleSortField } from "../../model/consts/consts";
 import { SortOrder } from "shared/types";
 import { Select, SelectOption } from "shared/ui/Select/Select";
 

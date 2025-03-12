@@ -1,4 +1,4 @@
-export { ScrollSaveSchema, ScrollSchema } from "./model/types/ScrollSaveSchema";
+export { type ScrollSaveSchema, type ScrollSchema } from "./model/types/ScrollSaveSchema";
 export { getScrollSaveByPath } from "./model/selectors/scrollSaveSelectors";
 export {
   scrollSaveActions,

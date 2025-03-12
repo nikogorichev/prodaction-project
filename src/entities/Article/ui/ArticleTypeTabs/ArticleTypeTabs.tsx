@@ -1,5 +1,5 @@
 import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
-import { ArticleType } from "../../model/types/article";
+import { ArticleType } from "entities/Article/model/consts/consts";
 
 const typeTabs: TabItem<ArticleType>[] = [
   {

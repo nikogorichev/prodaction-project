@@ -2,7 +2,7 @@ import { Currency } from "entities/Currency";
 import { Country } from "shared/const/common";
 import { validateProfileData } from "./validateProfileData";
 import { Profile } from "entities/Profile";
-import { ValidateProfileError } from "../../types/editableProfileCard";
+import { ValidateProfileError } from "../../consts/consts";
 
 const data: Profile = {
   username: "admin",

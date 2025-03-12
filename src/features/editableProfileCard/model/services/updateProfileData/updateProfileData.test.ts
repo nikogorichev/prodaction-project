@@ -3,7 +3,7 @@ import { Country } from "shared/const/common";
 import { Currency } from "entities/Currency";
 import { updateProfileData } from "./updateProfileData";
 import { Profile } from "entities/Profile";
-import { ValidateProfileError } from "../../types/editableProfileCard";
+import { ValidateProfileError } from "../../consts/consts";
 
 jest.mock("axios");
 

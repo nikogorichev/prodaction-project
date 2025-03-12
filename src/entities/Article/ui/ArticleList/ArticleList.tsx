@@ -1,5 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames";
-import { Article, ArticleView } from "../../model/types/article";
+import { Article } from "../../model/types/article";
+import { ArticleView } from "entities/Article/model/consts/consts";
 import styles from "./ArticleList.module.scss";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";

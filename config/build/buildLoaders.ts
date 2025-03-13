@@ -4,10 +4,12 @@ import { BuildOptions } from "./types/config";
 import { buildCssLoaders } from "./loaders/buildCssLoaders";
 import { buildBabelLoaders } from "./loaders/buildBabelLoaders";
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
-  const cssLoader = buildCssLoaders(isDev);
+export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+  const cssLoader = buildCssLoaders(options);
 
-  const babelLoader = buildBabelLoaders(isDev);
+  // const babelLoader = buildBabelLoaders(options);
+  const codeBabelLoader = buildBabelLoaders({ ...options, isTsx: false });
+  const tsxCodeBabelLoader = buildBabelLoaders({ ...options, isTsx: true });
 
   const typescriptLoader = {
     test: /\.tsx?$/,
@@ -29,5 +31,12 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
-  return [fileLoader, babelLoader, typescriptLoader, cssLoader, svgLoader];
+  return [
+    fileLoader,
+    codeBabelLoader,
+    tsxCodeBabelLoader,
+    // typescriptLoader,
+    cssLoader,
+    svgLoader,
+  ];
 }

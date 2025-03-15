@@ -2,8 +2,10 @@ import cls from "./Menu.module.scss";
 import { Fragment, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Menu as HMenu } from "@headlessui/react";
-import { AppLink } from "../AppLink/AppLink";
 import { DropdownDirection } from "shared/types/ui";
+import { AppLink } from "shared/ui/AppLink/AppLink";
+import { dropdownDirectionClasses } from "../../styles/consts";
+import popupCls from "../../styles/popups.module.scss";
 
 export type MenuItem = {
   content: ReactNode;
@@ -19,19 +21,15 @@ type MenuProps = {
   direction?: DropdownDirection;
 };
 
-const dropdownDirectionClasses: Record<DropdownDirection, string> = {
-  "top-left": cls.optionsTopLeft,
-  "top-right": cls.optionsTopRight,
-  "bottom-left": cls.optionsBottomLeft,
-  "bottom-right": cls.optionsBottomRight,
-};
-
 export const Menu = (props: MenuProps) => {
   const { className, trigger, items, direction = "bottom-left" } = props;
   const menuClasses = [dropdownDirectionClasses[direction]];
   return (
-    <HMenu as="div" className={classNames(cls.menuWrapper, {}, [className])}>
-      <HMenu.Button className={cls.menuBtn}>{trigger}</HMenu.Button>
+    <HMenu
+      as="div"
+      className={classNames(cls.wrapper, {}, [className, popupCls.popup])}
+    >
+      <HMenu.Button className={popupCls.trigger}>{trigger}</HMenu.Button>
       <HMenu.Items className={classNames(cls.menu, {}, menuClasses)}>
         {items.map((item) => {
           const content = ({ active }: { active: boolean }) => (
@@ -39,7 +37,9 @@ export const Menu = (props: MenuProps) => {
               type="button"
               disabled={item.disabled}
               onClick={item.onClick}
-              className={classNames(cls.item, { [cls.itemActive]: active })}
+              className={classNames(cls.item, {
+                [popupCls.itemActive]: active,
+              })}
             >
               {item.content}
             </button>

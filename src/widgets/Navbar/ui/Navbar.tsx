@@ -13,8 +13,11 @@ import {
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { Menu } from "shared/ui/Menu/Menu";
 import { Avatar } from "shared/ui/Avatar/Avatar";
+import { HStack } from "shared/ui/Stack";
+import { Icon } from "shared/ui/Icon/Icon";
+import NotificationIcon from "shared/assets/icons/notification-20-20.svg";
+import { Menu } from "shared/ui/Popups";
 
 type NavbarProps = { className?: string };
 
@@ -50,20 +53,24 @@ export const Navbar = ({ className }: NavbarProps) => {
         <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
           Создать статью
         </AppLink>
-        <Menu
-          className={styles.menu}
-          trigger={<Avatar size={30} src={authData.avatar} />}
-          items={[
-            {
-              content: "Профиль",
-              href: RoutePath.profile + authData.id,
-            },
-            { content: "Выйти", onClick: onLogout },
-            ...(isAdminPanelAvailable
-              ? [{ content: "Админ. панель", href: RoutePath.admin_panel }]
-              : []),
-          ]}
-        />
+        <HStack gap="16" className={styles.actions}>
+          <Button theme={ThemeButton.CLEAR}>
+            <Icon inverted Svg={NotificationIcon} />
+          </Button>
+          <Menu
+            trigger={<Avatar size={30} src={authData.avatar} />}
+            items={[
+              {
+                content: "Профиль",
+                href: RoutePath.profile + authData.id,
+              },
+              { content: "Выйти", onClick: onLogout },
+              ...(isAdminPanelAvailable
+                ? [{ content: "Админ. панель", href: RoutePath.admin_panel }]
+                : []),
+            ]}
+          />
+        </HStack>
       </header>
     );
   }

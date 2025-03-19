@@ -17,7 +17,7 @@ import { Avatar } from "shared/ui/Avatar/Avatar";
 import { HStack } from "shared/ui/Stack";
 import { Icon } from "shared/ui/Icon/Icon";
 import NotificationIcon from "shared/assets/icons/notification-20-20.svg";
-import { Menu } from "shared/ui/Popups";
+import { Menu, Popover } from "shared/ui/Popups";
 
 type NavbarProps = { className?: string };
 
@@ -54,9 +54,17 @@ export const Navbar = ({ className }: NavbarProps) => {
           Создать статью
         </AppLink>
         <HStack gap="16" className={styles.actions}>
-          <Button theme={ThemeButton.CLEAR}>
-            <Icon inverted Svg={NotificationIcon} />
-          </Button>
+          <Popover
+            direction="bottom-left"
+            trigger={
+              <Button theme={ThemeButton.CLEAR}>
+                <Icon inverted Svg={NotificationIcon} />
+              </Button>
+            }
+          >
+            21321
+          </Popover>
+
           <Menu
             trigger={<Avatar size={30} src={authData.avatar} />}
             items={[

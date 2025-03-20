@@ -18,6 +18,7 @@ import { HStack } from "shared/ui/Stack";
 import { Icon } from "shared/ui/Icon/Icon";
 import NotificationIcon from "shared/assets/icons/notification-20-20.svg";
 import { Menu, Popover } from "shared/ui/Popups";
+import { NotificationList } from "entities/Notification";
 
 type NavbarProps = { className?: string };
 
@@ -62,7 +63,7 @@ export const Navbar = ({ className }: NavbarProps) => {
               </Button>
             }
           >
-            21321
+            <NotificationList className={styles.notifications} />
           </Popover>
 
           <Menu

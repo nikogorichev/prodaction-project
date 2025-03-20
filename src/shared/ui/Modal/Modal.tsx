@@ -3,6 +3,7 @@ import styles from "./Modal.module.scss";
 import { memo, ReactNode, useEffect, useRef, useState } from "react";
 import { Portal } from "shared/ui/Portal/Portal";
 import { useTheme } from "app/providers/ThemeProvider";
+import { Overlay } from "../Overlay/Overlay";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -56,11 +57,7 @@ export const Modal = memo(
       };
     }, [isOpen]);
 
-    const onContentClick = (event: React.MouseEvent) => {
-      event.stopPropagation();
-    };
-
-    const additionalStyles = [className]
+    const additionalStyles = [className, "app_modal"];
 
     if (lazy && !isMounted) {
       return null;
@@ -69,11 +66,8 @@ export const Modal = memo(
     return (
       <Portal>
         <div className={classNames(styles.modal, mods, additionalStyles)}>
-          <div className={styles.overlay} onClick={handleOnClose}>
-            <div className={styles.content} onClick={onContentClick}>
-              {children}
-            </div>
-          </div>
+          <Overlay onClick={handleOnClose} />
+          <div className={styles.content}>{children}</div>
         </div>
       </Portal>
     );

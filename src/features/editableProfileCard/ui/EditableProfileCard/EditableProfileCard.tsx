@@ -15,7 +15,7 @@ import { Text, TextTheme } from "shared/ui/Text/Text";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
 const initialReducers: ReducersList = {

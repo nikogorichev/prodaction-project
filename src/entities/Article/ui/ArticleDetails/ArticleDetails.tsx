@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import styles from "./ArticleDetails.module.scss";
 import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";

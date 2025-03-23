@@ -5,7 +5,7 @@ import { Button } from "shared/ui/Button/Button";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
   addCommentFormActions,
   addCommentFormReducer,

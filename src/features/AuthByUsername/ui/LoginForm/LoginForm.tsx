@@ -16,7 +16,7 @@ import { getLoginError } from "features/AuthByUsername/model/selectors/getLoginE
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 const initialReducers: ReducersList = {

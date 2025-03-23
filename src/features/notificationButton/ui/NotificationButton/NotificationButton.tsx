@@ -8,6 +8,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { useDevice } from "shared/lib/hooks/useDevice/useDevice";
 import { Drawer } from "shared/ui/Drawer/Drawer";
 import { useState } from "react";
+import { AnimationProvider } from "shared/lib/components/AnimationProvider";
 
 type Props = {
   className?: string;
@@ -36,9 +37,11 @@ export const NotificationButton = (props: Props) => {
     return (
       <>
         {trigger}
-        <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-          <NotificationList />
-        </Drawer>
+        <AnimationProvider>
+          <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+            <NotificationList />
+          </Drawer>
+        </AnimationProvider>
       </>
     );
   }

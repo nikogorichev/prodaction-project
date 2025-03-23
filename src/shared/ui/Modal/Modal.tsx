@@ -1,9 +1,9 @@
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import styles from "./Modal.module.scss";
-import { memo, ReactNode, useEffect, useRef, useState } from "react";
+import { memo, ReactNode } from "react";
 import { Portal } from "shared/ui/Portal/Portal";
-import { useTheme } from "app/providers/ThemeProvider";
 import { Overlay } from "../Overlay/Overlay";
+import { useModal } from "shared/lib/hooks/useModal/useModal";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -13,65 +13,35 @@ interface ModalProps {
   lazy?: boolean;
 }
 
-const ANIMATION_DELAY = 300;
 
-export const Modal = memo(
-  ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
-    const [isClosing, setIsClosing] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+export const Modal = memo((props: ModalProps) => {
+  const { className, children, isOpen, onClose, lazy } = props;
 
-    const mods: Mods = {
-      [styles.opened]: isOpen,
-      [styles.isClosing]: isClosing,
-    };
+  const { isClosing, isMounted, close } = useModal({
+    isOpen,
+    onClose,
+    animationDelay: 300,
+  });
 
-    const handleOnClose = () => {
-      if (onClose) {
-        setIsClosing(true);
-        timerRef.current = setTimeout(() => {
-          onClose();
-          setIsClosing(false);
-        }, ANIMATION_DELAY);
-      }
-    };
+  const mods: Mods = {
+    [styles.opened]: isOpen,
+    [styles.isClosing]: isClosing,
+  };
 
-    useEffect(() => {
-      if (isOpen) {
-        setIsMounted(true);
-      }
-    }, [isOpen]);
+  const additionalStyles = [className, "app_modal"];
 
-    useEffect(() => {
-      const onKeyDown = (event: KeyboardEvent) => {
-        if (event.key === "Escape") {
-          handleOnClose();
-        }
-      };
-      if (isOpen) {
-        window.addEventListener("keydown", onKeyDown);
-      }
-      return () => {
-        timerRef.current && clearTimeout(timerRef.current);
-        window.removeEventListener("keydown", onKeyDown);
-      };
-    }, [isOpen]);
-
-    const additionalStyles = [className, "app_modal"];
-
-    if (lazy && !isMounted) {
-      return null;
-    }
-
-    return (
-      <Portal>
-        <div className={classNames(styles.modal, mods, additionalStyles)}>
-          <Overlay onClick={handleOnClose} />
-          <div className={styles.content}>{children}</div>
-        </div>
-      </Portal>
-    );
+  if (lazy && !isMounted) {
+    return null;
   }
-);
+
+  return (
+    <Portal>
+      <div className={classNames(styles.modal, mods, additionalStyles)}>
+        <Overlay onClick={close} />
+        <div className={styles.content}>{children}</div>
+      </div>
+    </Portal>
+  );
+});
 
 Modal.displayName = "Modal";

@@ -5,7 +5,7 @@ import { Text } from "shared/ui/Text/Text";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { Page } from "widgets/Page/Page";
 import { articleDetailsPageReducer } from "../../model/slice";
 import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";

@@ -1,10 +1,10 @@
 import { Popover as HPopover } from "@headlessui/react";
 import { ReactNode } from "react";
-import { DropdownDirection } from "shared/types/ui";
+import { DropdownDirection } from "@/shared/types/ui";
 import { dropdownDirectionClasses } from "../../styles/consts";
 import cls from "./Popover.module.scss";
 import popupCls from "../../styles/popups.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 type Props = {
   trigger: ReactNode;

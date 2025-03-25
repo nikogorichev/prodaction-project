@@ -1,6 +1,6 @@
-import { Text } from "shared/ui/Text/Text";
+import { Text } from "@/shared/ui/Text/Text";
 import { ArticleTextBlock } from "../../model/types/article";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import styles from "./ArticleTextBlockComponent.module.scss";
 
 type Props = {

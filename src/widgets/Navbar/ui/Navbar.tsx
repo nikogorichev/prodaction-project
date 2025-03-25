@@ -1,16 +1,16 @@
 import styles from "./navbar.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { useState } from "react";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
-import { LoginModal } from "features/AuthByUsername";
+import { Button, ThemeButton } from "@/shared/ui/Button/Button";
+import { LoginModal } from "@/features/AuthByUsername";
 import { useSelector } from "react-redux";
-import { getUserAuthData } from "entities/User";
-import { Text, TextTheme } from "shared/ui/Text/Text";
-import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { HStack } from "shared/ui/Stack";
-import { NotificationButton } from "features/notificationButton";
-import { AvatarMenu } from "features/avatarMenu";
+import { getUserAuthData } from "@/entities/User";
+import { Text, TextTheme } from "@/shared/ui/Text/Text";
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { HStack } from "@/shared/ui/Stack";
+import { NotificationButton } from "@/features/notificationButton";
+import { AvatarMenu } from "@/features/avatarMenu";
 
 type NavbarProps = { className?: string };
 

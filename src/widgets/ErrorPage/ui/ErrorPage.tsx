@@ -1,6 +1,6 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import styles from "./ErrorPage.module.scss";
-import { Button } from "shared/ui/Button/Button";
+import { Button } from "@/shared/ui/Button/Button";
 
 export const ErrorPage = () => {
   const reloadPage = () => {

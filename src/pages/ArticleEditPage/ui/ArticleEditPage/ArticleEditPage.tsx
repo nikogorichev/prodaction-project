@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Page } from "widgets/Page/Page";
+import { Page } from "@/widgets/Page/Page";
 
 const ArticleEditPage = () => {
   const { id } = useParams<{ id: string }>();

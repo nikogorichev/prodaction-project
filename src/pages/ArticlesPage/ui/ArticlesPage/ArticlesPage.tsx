@@ -1,12 +1,12 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import styles from "./ArticlesPage.module.scss";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { articlesPageReducer } from "../../model/slices/articlesPageSlice";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Page } from "widgets/Page/Page";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Page } from "@/widgets/Page/Page";
 import { fetchNextArticlePage } from "../../model/services/fetchNextArticlePage";
 import { ArticlePageFilter } from "../ArticlesPageFilter/ArticlePageFilter";
 import { ArticlesInfiniteList } from "../ArticlesInfiniteList/ArticlesInfiniteList";

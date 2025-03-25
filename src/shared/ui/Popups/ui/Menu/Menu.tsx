@@ -1,9 +1,9 @@
 import cls from "./Menu.module.scss";
 import { Fragment, ReactNode } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { Menu as HMenu } from "@headlessui/react";
-import { DropdownDirection } from "shared/types/ui";
-import { AppLink } from "shared/ui/AppLink/AppLink";
+import { DropdownDirection } from "@/shared/types/ui";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
 import { dropdownDirectionClasses } from "../../styles/consts";
 import popupCls from "../../styles/popups.module.scss";
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkExtraConfig } from "app/providers/StoreProvider";
-import { Comment } from "entities/Comment";
+import { ThunkExtraConfig } from "@/app/providers/StoreProvider";
+import { Comment } from "@/entities/Comment";
 
 export const fetchCommentsByArticleId = createAsyncThunk<
   Comment[],

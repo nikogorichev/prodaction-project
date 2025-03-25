@@ -1,7 +1,7 @@
-import { Text, TextAlign } from "shared/ui/Text/Text";
+import { Text, TextAlign } from "@/shared/ui/Text/Text";
 import { ArticleImageBlock } from "../../model/types/article";
 import styles from "./ArticleImageBlockComponent.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 type Props = {
   block: ArticleImageBlock;

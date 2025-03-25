@@ -3,11 +3,11 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { StateSchema } from "app/providers/StoreProvider";
-import { Comment } from "entities/Comment";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { Comment } from "@/entities/Comment";
 import { fetchCommentsByArticleId } from "../services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { ArticleDetailsRecommendationSchema } from "../types/ArticleDetailsRecommendationSchema";
-import { Article } from "entities/Article";
+import { Article } from "@/entities/Article";
 import { fetchArticleRecommendation } from "../services/fetchArticleRecommendation/fetchArticleRecommendation";
 
 const recommendationsAdapter = createEntityAdapter<Article>({

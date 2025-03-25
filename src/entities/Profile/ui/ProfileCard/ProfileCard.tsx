@@ -1,13 +1,13 @@
-import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
+import { Text, TextAlign, TextTheme } from "@/shared/ui/Text/Text";
 import styles from "./ProfileCard.module.scss";
-import { Input } from "shared/ui/Input/Input";
-import { Profile } from "entities/Profile/model/types/profile";
-import Loader from "shared/ui/Loader/Loader";
-import { classNames, Mods } from "shared/lib/classNames/classNames";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Currency, CurrencySelect } from "entities/Currency";
-import { Country } from "shared/const/common";
-import { HStack, VStack } from "shared/ui/Stack";
+import { Input } from "@/shared/ui/Input/Input";
+import { Profile } from "@/entities/Profile/model/types/profile";
+import Loader from "@/shared/ui/Loader/Loader";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Currency, CurrencySelect } from "@/entities/Currency";
+import { Country } from "@/shared/const/common";
+import { HStack, VStack } from "@/shared/ui/Stack";
 
 interface ProfileCardProps {
   data?: Profile;

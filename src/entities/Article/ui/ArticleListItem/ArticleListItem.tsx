@@ -1,20 +1,20 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import {
   Article,
   ArticleTextBlock,
 } from "../../model/types/article";
 import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import styles from "./ArticleListItem.module.scss";
-import { Text } from "shared/ui/Text/Text";
-import { Icon } from "shared/ui/Icon/Icon";
-import EyeIcon from "shared/assets/icons/view-20-20.svg";
-import { Card } from "shared/ui/Card/Card";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { Text } from "@/shared/ui/Text/Text";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import EyeIcon from "@/shared/assets/icons/view-20-20.svg";
+import { Card } from "@/shared/ui/Card/Card";
+import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { AppLink } from "shared/ui/AppLink/AppLink";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
 import { HTMLAttributeAnchorTarget } from "react";
 
 type Props = {

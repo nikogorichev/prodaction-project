@@ -1,4 +1,4 @@
-import { ListBox } from "shared/ui/Popups";
+import { ListBox } from "@/shared/ui/Popups";
 import { Currency } from "../../model/types/currency";
 
 const options = [

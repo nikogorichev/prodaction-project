@@ -1,8 +1,8 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { ArticleView } from "entities/Article/model/consts/consts";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { ArticleView } from "@/entities/Article/model/consts/consts";
 import styles from "./ArticleListItem.module.scss";
-import { Card } from "shared/ui/Card/Card";
-import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import { Card } from "@/shared/ui/Card/Card";
+import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
 
 type Props = {
   className?: string;

@@ -1,7 +1,7 @@
-import { StateSchema } from "app/providers/StoreProvider";
+import { StateSchema } from "@/app/providers/StoreProvider";
 import { getProfileData } from "./getProfileData";
-import { Currency } from "entities/Currency";
-import { Country } from "shared/const/common";
+import { Currency } from "@/entities/Currency";
+import { Country } from "@/shared/const/common";
 
 describe("getLoginError", () => {
   test("should return data", () => {

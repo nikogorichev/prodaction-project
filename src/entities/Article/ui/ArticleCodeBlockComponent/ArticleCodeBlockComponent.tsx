@@ -1,4 +1,4 @@
-import { Code } from "shared/ui/Code/Code";
+import { Code } from "@/shared/ui/Code/Code";
 import { ArticleCodeBlock } from "../../model/types/article";
 
 type Props = {

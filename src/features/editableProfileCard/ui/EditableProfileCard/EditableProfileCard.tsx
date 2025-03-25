@@ -1,5 +1,5 @@
-import { Currency } from "entities/Currency";
-import { ProfileCard } from "entities/Profile";
+import { Currency } from "@/entities/Currency";
+import { ProfileCard } from "@/entities/Profile";
 import { getProfileError } from "../../model/selectors/getProfileError/getProfileError";
 import { getProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";
 import { getProfileLoading } from "../../model/selectors/getProfileLoading/getProfileLoading";
@@ -9,13 +9,13 @@ import { fetchProfileData } from "../../model/services/fetchProfileData/fetchPro
 import { profileActions, profileReducer } from "../../model/slice/profileSlice";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { Text, TextTheme } from "shared/ui/Text/Text";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { Text, TextTheme } from "@/shared/ui/Text/Text";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
 const initialReducers: ReducersList = {

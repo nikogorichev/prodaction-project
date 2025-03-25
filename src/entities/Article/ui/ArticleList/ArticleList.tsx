@@ -1,10 +1,10 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { Article } from "../../model/types/article";
-import { ArticleView } from "entities/Article/model/consts/consts";
+import { ArticleView } from "@/entities/Article/model/consts/consts";
 import styles from "./ArticleList.module.scss";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
-import { Text, TextSize } from "shared/ui/Text/Text";
+import { Text, TextSize } from "@/shared/ui/Text/Text";
 import { HTMLAttributeAnchorTarget } from "react";
 import {
   AutoSizer,
@@ -12,7 +12,7 @@ import {
   ListRowProps,
   WindowScroller,
 } from "react-virtualized";
-import { PAGE_ID } from "widgets/Page/Page";
+import { PAGE_ID } from "@/widgets/Page/Page";
 
 type Props = {
   className?: string;

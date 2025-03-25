@@ -1,5 +1,5 @@
 import { Link, LinkProps } from "react-router-dom";
-import { classNames, Mods } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
 import styles from "./button.module.scss";
 import { ButtonHTMLAttributes } from "react";
 

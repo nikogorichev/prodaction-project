@@ -1,7 +1,7 @@
-import { Currency } from "entities/Currency";
-import { Country } from "shared/const/common";
+import { Currency } from "@/entities/Currency";
+import { Country } from "@/shared/const/common";
 import { validateProfileData } from "./validateProfileData";
-import { Profile } from "entities/Profile";
+import { Profile } from "@/entities/Profile";
 import { ValidateProfileError } from "../../consts/consts";
 
 const data: Profile = {

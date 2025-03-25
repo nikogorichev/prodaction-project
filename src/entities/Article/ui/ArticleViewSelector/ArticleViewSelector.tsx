@@ -1,10 +1,10 @@
 import styles from "./ArticleViewSelector.module.scss";
-import { ArticleView } from "entities/Article/model/consts/consts";
-import ListIcon from "shared/assets/icons/list-24-24.svg";
-import GridIcon from "shared/assets/icons/tiled-24-24.svg";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
-import { Icon } from "shared/ui/Icon/Icon";
-import { classNames } from "shared/lib/classNames/classNames";
+import { ArticleView } from "@/entities/Article/model/consts/consts";
+import ListIcon from "@/shared/assets/icons/list-24-24.svg";
+import GridIcon from "@/shared/assets/icons/tiled-24-24.svg";
+import { Button, ThemeButton } from "@/shared/ui/Button/Button";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 type Props = {
   className?: string;

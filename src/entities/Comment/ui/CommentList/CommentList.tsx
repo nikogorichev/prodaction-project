@@ -1,7 +1,7 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import styles from "./CommentList.module.scss";
 import { CommentCard } from "../CommentCard/CommentCard";
-import { Text } from "shared/ui/Text/Text";
+import { Text } from "@/shared/ui/Text/Text";
 import { Comment } from "../../model/types/comment";
 
 type Props = {

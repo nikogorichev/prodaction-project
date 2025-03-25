@@ -2,29 +2,29 @@ import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
-} from "entities/Article/model/selectors/articleDetails";
-import { fetchArticleById } from "entities/Article/model/services/fetchArticleById/fetchArticleById";
-import { articleDetailsReducer } from "entities/Article/model/slice/articleDetailsSlice";
+} from "@/entities/Article/model/selectors/articleDetails";
+import { fetchArticleById } from "@/entities/Article/model/services/fetchArticleById/fetchArticleById";
+import { articleDetailsReducer } from "@/entities/Article/model/slice/articleDetailsSlice";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import styles from "./ArticleDetails.module.scss";
-import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
-import { Skeleton } from "shared/ui/Skeleton/Skeleton";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import EyeIcon from "shared/assets/icons/view-20-20.svg";
-import CalendarIcon from "shared/assets/icons/date-20-20.svg";
-import { Icon } from "shared/ui/Icon/Icon";
+import { Text, TextAlign, TextSize, TextTheme } from "@/shared/ui/Text/Text";
+import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import EyeIcon from "@/shared/assets/icons/view-20-20.svg";
+import CalendarIcon from "@/shared/assets/icons/date-20-20.svg";
+import { Icon } from "@/shared/ui/Icon/Icon";
 import { ArticleBlock } from "../../model/types/article";
-import { ArticleBlockType } from "entities/Article/model/consts/consts";
+import { ArticleBlockType } from "@/entities/Article/model/consts/consts";
 import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent";
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,

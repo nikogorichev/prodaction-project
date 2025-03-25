@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CommentList } from "entities/Comment";
-import { AddCommentForm } from "features/addCommentForm";
-import { Text, TextSize } from "shared/ui/Text/Text";
+import { CommentList } from "@/entities/Comment";
+import { AddCommentForm } from "@/features/addCommentForm";
+import { Text, TextSize } from "@/shared/ui/Text/Text";
 import { getArticleComments } from "../../model/slice/articleDetailsCommentsSlice";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
-import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { Suspense } from "react";
-import Loader from "shared/ui/Loader/Loader";
+import Loader from "@/shared/ui/Loader/Loader";
 
 type Props = {
   id: string;

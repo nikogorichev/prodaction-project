@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import styles from "./ArticleDetailsPageHeader.module.scss";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { getCanEditArticle } from "../../model/selectors/article";
-import { getArticleDetailsData } from "entities/Article";
+import { getArticleDetailsData } from "@/entities/Article";
 
 export const ArticleDetailsPageHeader = () => {
   const navigate = useNavigate();

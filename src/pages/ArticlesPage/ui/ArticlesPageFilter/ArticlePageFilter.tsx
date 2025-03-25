@@ -3,9 +3,9 @@ import {
   ArticleSortSelector,
   ArticleView,
   ArticleViewSelector,
-} from "entities/Article";
+} from "@/entities/Article";
 import styles from "./ArticlePageFilter.module.scss";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { articlesPageActions } from "../../model/slices/articlesPageSlice";
 import { useSelector } from "react-redux";
 import {
@@ -15,14 +15,14 @@ import {
   getArticlesPageType,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
-import { Card } from "shared/ui/Card/Card";
-import { Input } from "shared/ui/Input/Input";
-import { SortOrder } from "shared/types";
+import { Card } from "@/shared/ui/Card/Card";
+import { Input } from "@/shared/ui/Input/Input";
+import { SortOrder } from "@/shared/types";
 import { fetchArticleList } from "../../model/services/fetchArticlesList";
-import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
-import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
-import { ArticleType } from "entities/Article";
-import { ArticleTypeTabs } from "entities/Article";
+import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
+import { TabItem, Tabs } from "@/shared/ui/Tabs/Tabs";
+import { ArticleType } from "@/entities/Article";
+import { ArticleTypeTabs } from "@/entities/Article";
 
 export const ArticlePageFilter = () => {
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import { ArticleList } from "entities/Article";
+import { ArticleList } from "@/entities/Article";
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
@@ -7,10 +7,10 @@ import {
 import { getArticles } from "../../model/slices/articlesPageSlice";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { initArticlesPage } from "pages/ArticlesPage/model/services/initArticlesPage";
-import { Text, TextTheme } from "shared/ui/Text/Text";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { initArticlesPage } from "@/pages/ArticlesPage/model/services/initArticlesPage";
+import { Text, TextTheme } from "@/shared/ui/Text/Text";
 
 export const ArticlesInfiniteList = () => {
   const dispatch = useAppDispatch();

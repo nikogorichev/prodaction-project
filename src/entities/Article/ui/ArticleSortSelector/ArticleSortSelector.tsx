@@ -1,7 +1,7 @@
 import styles from "./ArticleSortSelector.module.scss"
 import { ArticleSortField } from "../../model/consts/consts";
-import { SortOrder } from "shared/types";
-import { Select, SelectOption } from "shared/ui/Select/Select";
+import { SortOrder } from "@/shared/types";
+import { Select, SelectOption } from "@/shared/ui/Select/Select";
 
 const orderOptions: SelectOption<SortOrder>[] = [
   {

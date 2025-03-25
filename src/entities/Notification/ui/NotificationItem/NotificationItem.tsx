@@ -1,6 +1,6 @@
 import cls from "./NotificationItem.module.scss";
-import { Card, CardTheme } from "shared/ui/Card/Card";
-import { Text } from "shared/ui/Text/Text";
+import { Card, CardTheme } from "@/shared/ui/Card/Card";
+import { Text } from "@/shared/ui/Text/Text";
 import { Notification } from "../../model/types/notification";
 
 type Props = {

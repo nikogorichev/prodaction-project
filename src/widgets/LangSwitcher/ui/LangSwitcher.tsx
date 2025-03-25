@@ -1,6 +1,6 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import styles from "./langSwitcher.module.scss";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
 
 type LangSwitcherProps = { className?: string; short?: boolean };

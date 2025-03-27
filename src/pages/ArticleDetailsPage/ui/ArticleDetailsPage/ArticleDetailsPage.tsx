@@ -11,6 +11,7 @@ import { articleDetailsPageReducer } from "../../model/slice";
 import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 import { ArticleRecommendationsList } from "@/features/articleRecommendationsList";
 import { ArticleDetailsComment } from "../ArticleDetailsComment/ArticleDetailsComment";
+import { ArticleRating } from "@/features/articleRating";
 
 const reducersList: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer,
@@ -28,6 +29,7 @@ const ArticleDetailsPage = () => {
       <Page className={styles.ArticleDetailsPage}>
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
+        <ArticleRating articleId={id} />
         <ArticleRecommendationsList />
         <ArticleDetailsComment id={id} />
       </Page>

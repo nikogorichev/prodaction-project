@@ -98,7 +98,9 @@
       "views": 1022,
       "createdAt": "26.04.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -168,7 +170,9 @@
       "views": 5204,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -190,7 +194,9 @@
       "views": 94002,
       "createdAt": "26.02.2019",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -212,7 +218,9 @@
       "views": 10222,
       "createdAt": "24.01.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -234,7 +242,9 @@
       "views": 10222,
       "createdAt": "26.02.2020",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -256,7 +266,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -278,7 +290,9 @@
       "views": 100,
       "createdAt": "21.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -300,7 +314,9 @@
       "views": 102222,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -322,7 +338,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -344,7 +362,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -366,7 +386,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -388,7 +410,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -410,7 +434,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -432,7 +458,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -454,7 +482,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -476,7 +506,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -498,7 +530,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -520,7 +554,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -542,7 +578,9 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "userId": "1",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -562,21 +600,27 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "roles": ["ADMIN"],
+      "roles": [
+        "ADMIN"
+      ],
       "avatar": "https://i.pinimg.com/736x/94/3a/69/943a69bb778d0a3621b9e6fbfbc6044c.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "roles": ["USER"],
+      "roles": [
+        "USER"
+      ],
       "avatar": "https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
     },
     {
       "id": "3",
       "username": "manager",
       "password": "123",
-      "roles": ["MANAGER"],
+      "roles": [
+        "MANAGER"
+      ],
       "avatar": "https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
     }
   ],
@@ -602,6 +646,85 @@
       "city": "Saint-Petersburg",
       "username": "test",
       "avatar": "https://media.newyorker.com/photos/59095bb86552fa0be682d9d0/master/pass/Monkey-Selfie.jpg"
+    }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "",
+      "id": "I7ofk1u"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "отстой",
+      "id": "II0a75O"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": "bcPnbbZ"
+    },
+    {
+      "articleId": "4",
+      "userId": "1",
+      "rate": 5,
+      "feedback": "класс",
+      "id": "L96VccR"
+    },
+    {
+      "articleId": "5",
+      "userId": "1",
+      "rate": 3,
+      "id": "fysTZ2C"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "rate": 5,
+      "id": "CSHj58q"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
     }
   ]
 }

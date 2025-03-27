@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { Input } from "@/shared/ui/Input/Input";
 import { Page } from "@/widgets/Page/Page";
 import { Text } from "@/shared/ui/Text/Text";
-import { StarRating } from "@/shared/ui/StarRating/StarRating";
 
 function humanizeTime(timeMs: number = 0) {
   const minutes = Math.floor(timeMs / 1000 / 60);
@@ -88,7 +87,6 @@ const MainPage = () => {
   return (
     <Page>
       <Text title={t("Главная")} text="обычный текст" />
-      <StarRating/>
       {/* <Input value={value} onChange={handleChange} /> */}
       
 

@@ -31,9 +31,10 @@ export const Menu = (props: MenuProps) => {
     >
       <HMenu.Button className={popupCls.trigger}>{trigger}</HMenu.Button>
       <HMenu.Items className={classNames(cls.menu, {}, menuClasses)}>
-        {items.map((item) => {
+        {items.map((item, index) => {
           const content = ({ active }: { active: boolean }) => (
             <button
+              key={index}
               type="button"
               disabled={item.disabled}
               onClick={item.onClick}

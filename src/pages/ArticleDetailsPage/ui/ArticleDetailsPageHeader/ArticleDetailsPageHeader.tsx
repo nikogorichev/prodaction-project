@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./ArticleDetailsPageHeader.module.scss";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { RoutePath } from "@/shared/const/router";
 import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { getCanEditArticle } from "../../model/selectors/article";
 import { getArticleDetailsData } from "@/entities/Article";

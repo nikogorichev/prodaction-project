@@ -29,7 +29,7 @@ const ArticleDetailsPage = () => {
       <Page className={styles.ArticleDetailsPage}>
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
-        <ArticleRating articleId={id} />
+        <ArticleRating articleId={id} /> 
         <ArticleRecommendationsList />
         <ArticleDetailsComment id={id} />
       </Page>

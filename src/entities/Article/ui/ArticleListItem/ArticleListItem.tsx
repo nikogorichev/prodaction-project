@@ -11,7 +11,7 @@ import EyeIcon from "@/shared/assets/icons/view-20-20.svg";
 import { Card } from "@/shared/ui/Card/Card";
 import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { RoutePath } from "@/shared/const/router";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 import { AppLink } from "@/shared/ui/AppLink/AppLink";

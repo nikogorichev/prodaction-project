@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import "@/app/styles/index.scss";
+import { Theme } from "@/shared/const/theme";
 import { StoryFn } from "@storybook/react";
-import { Theme } from "@/app/providers/ThemeProvider";
 
 // export const ThemeDecorator: Decorator = (Story) => (
 //   <div className={`app ${theme}`}>{<Story />}</div>

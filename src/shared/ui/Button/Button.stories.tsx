@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
-import React from "react";
 
 import { Button, ButtonSize, ThemeButton } from "./Button";
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/app/providers/ThemeProvider";
+import { Theme } from "@/shared/const/theme";
 
 const meta: Meta<typeof Button> = {
   title: "shared/Button",

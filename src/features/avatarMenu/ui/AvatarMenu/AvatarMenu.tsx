@@ -5,9 +5,9 @@ import {
   userActions,
 } from "@/entities/User";
 import { useDispatch, useSelector } from "react-redux";
-import { RoutePath } from "@/shared/const/router";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 import { Menu } from "@/shared/ui/Popups";
+import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
 
 export const AvatarMenu = () => {
   const authData = useSelector(getUserAuthData);
@@ -31,11 +31,11 @@ export const AvatarMenu = () => {
       items={[
         {
           content: "Профиль",
-          href: RoutePath.profile + authData.id,
+          href: getRouteProfile(authData.id),
         },
         { content: "Выйти", onClick: onLogout },
         ...(isAdminPanelAvailable
-          ? [{ content: "Админ. панель", href: RoutePath.admin_panel }]
+          ? [{ content: "Админ. панель", href: getRouteAdmin() }]
           : []),
       ]}
     />

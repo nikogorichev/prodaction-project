@@ -11,11 +11,11 @@ import EyeIcon from "@/shared/assets/icons/view-20-20.svg";
 import { Card } from "@/shared/ui/Card/Card";
 import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "@/shared/const/router";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 import { AppLink } from "@/shared/ui/AppLink/AppLink";
 import { HTMLAttributeAnchorTarget } from "react";
+import { getRouteArticleDetails } from "@/shared/const/router";
 
 type Props = {
   className?: string;
@@ -63,7 +63,7 @@ export const ArticleListItem = (props: Props) => {
           )}
           <div className={styles.footer}>
             <AppLink
-              to={RoutePath.article_details + article.id}
+              to={getRouteArticleDetails(article.id)}
               target={target}
             >
               <Button theme={ThemeButton.OUTLINE}>Читать далее...</Button>
@@ -78,7 +78,7 @@ export const ArticleListItem = (props: Props) => {
   return (
     <AppLink
       className={classNames(styles.wrapper, {}, [className, styles[view]])}
-      to={RoutePath.article_details + article.id}
+      to={getRouteArticleDetails(article.id)}
       target={target}
     >
       <Card>

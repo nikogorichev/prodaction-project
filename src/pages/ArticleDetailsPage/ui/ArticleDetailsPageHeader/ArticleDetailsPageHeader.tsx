@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import styles from "./ArticleDetailsPageHeader.module.scss";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "@/shared/const/router";
 import { Button, ThemeButton } from "@/shared/ui/Button/Button";
 import { getCanEditArticle } from "../../model/selectors/article";
 import { getArticleDetailsData } from "@/entities/Article";
+import { getRouteArticleEdit, getRouteArticles } from "@/shared/const/router";
 
 export const ArticleDetailsPageHeader = () => {
   const navigate = useNavigate();
@@ -12,11 +12,11 @@ export const ArticleDetailsPageHeader = () => {
   const article = useSelector(getArticleDetailsData)
 
   const onBackToList = () => {
-    navigate(RoutePath.articles);
+    navigate(getRouteArticles());
   };
 
   const onEditPage = () => {
-    navigate(`${RoutePath.article_details}${article?.id}/edit`);
+    navigate(getRouteArticleEdit(article?.id ?? ""));
   };
 
   return (

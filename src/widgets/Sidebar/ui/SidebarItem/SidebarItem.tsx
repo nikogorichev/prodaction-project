@@ -1,6 +1,4 @@
-import { RoutePath } from "@/shared/const/router";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import MainIcon from "@/shared/assets/icons/main-20-20.svg";
 import styles from "./SidebarItem.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useSelector } from "react-redux";

@@ -7,10 +7,10 @@ import { useSelector } from "react-redux";
 import { getUserAuthData } from "@/entities/User";
 import { Text, TextTheme } from "@/shared/ui/Text/Text";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import { RoutePath } from "@/shared/const/router";
 import { HStack } from "@/shared/ui/Stack";
 import { NotificationButton } from "@/features/notificationButton";
 import { AvatarMenu } from "@/features/avatarMenu";
+import { getRouteArticleCreate } from "@/shared/const/router";
 
 type NavbarProps = { className?: string };
 
@@ -34,7 +34,7 @@ export const Navbar = ({ className }: NavbarProps) => {
           title="Test app"
           theme={TextTheme.INVERTED}
         />
-        <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY}>
+        <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY}>
           Создать статью
         </AppLink>
         <HStack gap="16" className={styles.actions}>
